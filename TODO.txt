@@ -1,4 +1,4 @@
-ORGANIZAR MENUS Y FOOTER
+ORGANIZAR MENú DERECHO
 
 
 Home
@@ -6,13 +6,13 @@ Home
 - Mejorar y subir una nueva CV
 
 Currículum
-- Cambiar incono de hablemos
+- 
 
 Portafolio
 - 
 
 Blog 
-- como subir un sitio web a github pages
+- 
 - 
 
 Contacto
