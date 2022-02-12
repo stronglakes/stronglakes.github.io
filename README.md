@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Luis Fernando CV
 
 PlatziVideo es la plataforma que te permite ver videos on demand y además 
@@ -21,3 +22,6 @@ Puedes crear un pull request al proyecto
 ## Licencia
 
 MIT
+=======
+### Gracias por estar aquí <3
+
