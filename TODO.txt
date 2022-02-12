@@ -1,0 +1,19 @@
+ORGANIZAR MENUS Y FOOTER
+
+
+Home
+- Cambiar desccripción Web Development
+- Mejorar y subir una nueva CV
+
+Currículum
+- 
+
+Portafolio
+- 
+
+Blog 
+- como subir un sitio web a github pages
+- 
+
+Contacto
+- Crear nueva página de reserva excitosa
