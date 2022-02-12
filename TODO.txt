@@ -1,3 +1,6 @@
+
+
+
 ORGANIZAR MENú DERECHO
 
 
@@ -9,10 +12,10 @@ Currículum
 - 
 
 Portafolio
-- 
+- Agregar Experimentos
 
 Blog 
-- 
+- Crear 4 Posts
 - 
 
 Contacto
