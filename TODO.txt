@@ -16,7 +16,10 @@ Portafolio
 
 Blog 
 - Crear 4 Posts
-- 
+    - Importancia de una web para tu marca
+    - Cómo la tecnología es usada para ayudar
+    - Plugins premmium para wordpress
+    -
 
 Contacto
 - Crear nueva página de reserva excitosa
