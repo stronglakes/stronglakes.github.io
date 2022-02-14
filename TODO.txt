@@ -15,11 +15,12 @@ Portafolio
 - Agregar Experimentos
 
 Blog 
+- Borrar botón "ver todos"
 - Crear 4 Posts
     - Importancia de una web para tu marca
     - Cómo la tecnología es usada para ayudar
+    - Importancia del diseño ui
     - Plugins premmium para wordpress
-    -
 
 Contacto
 - Crear nueva página de reserva excitosa
