@@ -27,3 +27,6 @@ Blog
 
 Contacto
 - Crear nueva página de reserva excitosa
+
+FAVICON 
+Diseñar uno nuevo
