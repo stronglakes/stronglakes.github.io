@@ -21,6 +21,9 @@ Blog
     - Cómo la tecnología es usada para ayudar
     - Importancia del diseño ui
     - Plugins premmium para wordpress
+        - Call to action
+        - Mejorar aspeccto de la lista de Plugins
+        - Cambiar imG de portada
 
 Contacto
 - Crear nueva página de reserva excitosa
