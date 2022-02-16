@@ -7,6 +7,7 @@ ORGANIZAR MENú DERECHO
 Home
 - Cambiar desccripción Web Development
 - Mejorar y subir una nueva CV
+- Hacer que se abra la cv xd
 
 Currículum
 - 
@@ -16,14 +17,15 @@ Portafolio
 
 Blog 
 - Borrar botón "ver todos"
-- Crear 4 Posts
+- Crear Posts
     - Importancia de una web para tu marca
+        - Crear portada
+        -
     - Cómo la tecnología es usada para ayudar
     - Importancia del diseño ui
     - Plugins premmium para wordpress
         - Centrar Call to action
-        - Mejorar aspeccto de la lista de Plugins
-        - Cambiar imG de portada
+        - Adjuntar archivos en Drivw
 
 Contacto
 - Crear nueva página de reserva excitosa
