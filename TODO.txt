@@ -16,7 +16,7 @@ Portafolio
 - Agregar Experimentos
 
 Blog 
-- Borrar botón "ver todos"
+- Cambiar CSS del CTA para centrarlo
 - Crear Posts
     - Importancia de una web para tu marca
         - Crear portada
