@@ -10,12 +10,8 @@ Portafolio
 - Agregar Experimentos
 
 Blog 
-- Cambiar CSS del CTA para centrarlo
 - Crear Posts
-    - Importancia de una web para tu marca
-        - Crear portada
-        -
-    - Cómo la tecnología es usada para ayudar
+    - Cómo la tecnología es usada para ayudar a proyectos sociales
     - Importancia del diseño ui
     - Plugins premmium para wordpress
         - Centrar Call to action
