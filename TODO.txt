@@ -11,7 +11,7 @@ Portafolio
 
 Blog 
 - Crear Posts
-    - Cómo la tecnología es usada para ayudar a proyectos sociales
+    - Cómo la tecnología es usada para ayudar a proyectos sociales/ diferentes
     - Importancia del diseño ui
     - Plugins premmium para wordpress
         - Centrar Call to action
@@ -21,4 +21,3 @@ Contacto
 - Crear nueva página de reserva excitosa
 
 FAVICON 
-Diseñar uno nuevo
