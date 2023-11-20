@@ -63,4 +63,4 @@ jobs:
           app-name: 'ffuertes-cv'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_75C1D71D3F544B629217ACFE79E53FD2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_66C5EC35DF2E405BA9EFD3DD3100FF74 }}
