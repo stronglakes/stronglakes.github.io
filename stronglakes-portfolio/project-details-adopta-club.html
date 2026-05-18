@@ -1,0 +1,845 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Adopta.club — Proyecto | Luis Fernando Fuertes</title>
+    <meta name="description" content="Diseño y desarrollo completo de adopta.club, plataforma de adopción de mascotas en Ecuador con más de 200 adopciones facilitadas.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, adopta.club, adopción, mascotas, Ecuador, UX, desarrollo web">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="Adopta.club — Proyecto | Luis Fernando Fuertes">
+    <meta property="og:description" content="Plataforma de adopción de mascotas en Ecuador con más de 200 adopciones facilitadas.">
+    <meta property="og:url" content="https://stronglakes.github.io/project-details-adopta-club.html">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+      /* ── Brand colors ── */
+      :root {
+        --accent--light: #6EC1E4;
+        --accent-rgb--light: 110, 193, 228;
+        --additional--light: #ED4956;
+        --additional-rgb--light: 237, 73, 86;
+        --accent--dark: #ED4956;
+        --accent-rgb--dark: 237, 73, 86;
+        --additional--dark: #6EC1E4;
+        --additional-rgb--dark: 110, 193, 228;
+      }
+
+      /* ── Directorio de animales ── */
+      .adopta-directory__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3rem; }
+      .adopta-card { display: flex; flex-direction: column; text-decoration: none; height: 100%; transition: transform 0.3s ease; }
+      .adopta-card:hover { transform: translateY(-6px); }
+      .adopta-card__img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; border-radius: 16px; }
+      .adopta-card__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+      .adopta-card:hover .adopta-card__img { transform: scale(1.04); }
+      .adopta-card__img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 55%, transparent 100%); border-radius: 16px; }
+      .adopta-card__badge { position: absolute; top: 1rem; left: 1rem; z-index: 2; background: var(--accent); color: #fff; border: none; }
+      .adopta-card__img-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.6rem; z-index: 2; }
+      .adopta-card__name { font-size: 1.9rem; font-weight: 700; margin: 0 0 0.5rem; color: #fff; }
+      .adopta-card__desc { font-weight: 400; font-size: 1.3rem; color: rgba(255,255,255,0.82); margin: 0 0 1rem; line-height: 1.5; }
+      .adopta-card__img-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .adopta-card__img-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 1.2rem; font-weight: 500; padding: 0.35rem 0.8rem; border-radius: 99px; background: #fff; color: #161616; border: none; }
+      .adopta-card__img-tag i { font-size: 1.3rem; }
+
+      /* ── Adoption slider ── */
+      .adoption-slider { position: relative; height: 100%; }
+      .adoption-slider__slide { position: absolute; inset: 0; pointer-events: none; }
+      .adoption-slider__slide.is-active { pointer-events: auto; }
+      .adoption-slider__avatar {
+        position: absolute; inset: 0;
+        border-radius: 16px; overflow: hidden;
+        background: linear-gradient(135deg, var(--accent), var(--additional));
+        opacity: 0; transform: scale(0.96);
+        transition: transform 0.5s cubic-bezier(0.34,1.2,0.64,1), opacity 0.4s ease;
+      }
+      .adoption-slider__avatar.avatar-in { opacity: 1; transform: scale(1); }
+      .adoption-slider__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+      .adoption-slider__notification {
+        position: absolute; top: 1.2rem; left: 1.6rem; right: 1.6rem; z-index: 2;
+        display: flex; align-items: center; gap: 0.8rem;
+        background: linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(225,235,255,0.92) 100%);
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border-radius: 14px;
+        padding: 1rem 1.2rem; box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+        opacity: 0; transform: translateY(-18px);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+      .adoption-slider__notification.notif-in { opacity: 1; transform: translateY(0); }
+      .adoption-slider__icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+      .adoption-slider__name { margin: 0 0 0.3rem; font-size: 1.4rem; font-weight: 600; color: #111; line-height: 1.2; }
+      .adoption-slider__message { margin: 0; font-size: 1.4rem; color: #555; line-height: 1.4; }
+
+      /* ── Services cards: per-card styles ── */
+
+      /* White text/tags for colored cards (Beneficios, Donaciones) */
+      .card-text-white { color: #fff; }
+      .card-tag-white { color: #fff; border-color: #fff; }
+
+      /* Directorio card: text/image layout */
+      .directorio-card-inner { padding-right: 48% !important; }
+      .directorio-card-img { top: 1.5rem !important; right: 1.5rem !important; bottom: 1.5rem !important; width: 44% !important; height: auto !important; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; }
+
+      /* Beneficios card */
+      .beneficios-img { top: 0 !important; }
+      .beneficios-img img { border-radius: 16px; }
+
+      /* Perfil de mascota: inline image */
+      .adopta-perfil-img { position: relative !important; top: auto !important; right: auto !important; left: auto !important; bottom: auto !important; width: 100% !important; margin-top: 1.5rem !important; border-radius: 10px; overflow: hidden; }
+      .adopta-perfil-img img { width: 100% !important; display: block; border-radius: 10px; }
+
+      /* Adopciones: cat overflow effect (desktop) */
+      .adopciones-item { overflow: visible; }
+      .adopciones-item .mxd-services-cards-s__inner { overflow: visible !important; }
+      .gato-adopciones { top: -240px !important; right: -110px !important; transform: rotate(-30deg) !important; }
+
+      /* CTA background image */
+      .mxd-promo__bg--gato { background-image: url('img/works/adopta-club/gato%20-%20copia.png'); background-size: contain; background-repeat: no-repeat; background-position: right center; }
+
+      /* ── Color scheme: always-light cards ── */
+      [color-scheme=dark] .card-always-light { --base-tint: #FFFFFF; --t-bright: #161616; --t-medium: #303030; --t-muted: #585858; --st-bright: #161616; }
+      @media (prefers-color-scheme: dark) { :root:not([color-scheme=light]) .card-always-light { --base-tint: #FFFFFF; --t-bright: #161616; --t-medium: #303030; --t-muted: #585858; --st-bright: #161616; } }
+      [color-scheme=light] .card-opp-always-light { --base-opp: #FFFFFF; --t-opp-bright: #161616; --t-opp-medium: #303030; --st-opp-bright: #161616; }
+      @media (prefers-color-scheme: light) { :root:not([color-scheme=dark]) .card-opp-always-light { --base-opp: #FFFFFF; --t-opp-bright: #161616; --t-opp-medium: #303030; --st-opp-bright: #161616; } }
+
+      /* ── Responsive: mobile (≤767px) ── */
+      @media (max-width: 767px) {
+        .adopciones-item { height: 600px !important; overflow: visible !important; }
+        .adopciones-item .mxd-services-cards-s__inner { overflow: hidden !important; }
+        .gato-adopciones { position: absolute !important; top: auto !important; bottom: -5px !important; left: 0 !important; right: 0 !important; transform: none !important; width: 100% !important; max-width: 100% !important; }
+        .gato-adopciones img { width: 100% !important; height: auto !important; display: block !important; }
+        .directorio-card-inner { padding-right: 3rem !important; }
+        .directorio-card-img { width: 100% !important; aspect-ratio: 4/3 !important; margin-top: 1.5rem !important; }
+      }
+
+      /* ── Responsive: tablet (768px–1199px) ── */
+      @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .mxd-services-cards-s__item { height: 560px !important; }
+        .adopciones-item { height: 560px !important; overflow: visible !important; }
+        .adopciones-item .mxd-services-cards-s__inner { overflow: hidden !important; }
+        .gato-adopciones { position: absolute !important; top: auto !important; bottom: -240px !important; left: 0 !important; right: 0 !important; transform: none !important; width: 100% !important; max-width: 100% !important; }
+        .gato-adopciones img { width: 100% !important; height: auto !important; display: block !important; }
+        /* Directorio: forzar posición absoluta en rango donde el framework no la activa aún */
+        .directorio-card-img { position: absolute !important; }
+      }
+    </style>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Content Start -->
+    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+
+      <!-- Titular del proyecto -->
+      <div class="mxd-section mxd-section-inner-headline padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div class="mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="https://adopta.club" target="_blank" rel="noopener">
+                      <span class="btn-caption">Ver proyecto</span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div class="mxd-block__content">
+                    <div class="mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">adopta.club</h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12"></div>
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="inner-headline__paragraph loading__item">
+                    <p>Ecuador tiene más de un millón de mascotas viviendo en las calles, y durante la pandemia el abandono animal se disparó. Adopta.club nació como respuesta a esa realidad: un directorio digital donde refugios y adoptantes se encuentran, y donde cada adopción es el comienzo de una historia nueva.</p>
+                  </div>
+                  <div class="inner-headline__data">
+                    <div class="mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Proyecto</p>
+                              <p class="mxd-data-list__content">Propio</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Servicio</p>
+                              <p class="mxd-data-list__content">UX / Desarrollo Web</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Industria</p>
+                              <p class="mxd-data-list__content">Impacto Social</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Impacto</p>
+                              <p class="mxd-data-list__content">200+ adopciones</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <span class="tag tag-default tag-outline-medium">UX/UI</span>
+                    <span class="tag tag-default tag-outline-medium">Desarrollo Web</span>
+                    <span class="tag tag-default tag-outline-medium">Impacto Social</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Directorio de animales -->
+      <div class="mxd-section padding-default">
+        <div class="mxd-container grid-container">
+          <div class="adopta-directory">
+
+            <div class="adopta-directory__header">
+              <p class="t-small" style="font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--t-medium); margin:0;">Directorio en vivo</p>
+              <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="https://adopta.club" target="_blank" rel="noopener">
+                <span class="btn-caption">Ver todos</span>
+                <i class="ph ph-arrow-up-right"></i>
+              </a>
+            </div>
+
+            <div class="container-fluid px-0">
+              <div class="row g-4">
+
+                <!-- Valentín -->
+                <div class="col-12 col-md-6 col-xl-4">
+                  <a class="adopta-card radius-l" href="https://adopta.club/listing/valentin/" target="_blank" rel="noopener">
+                    <div class="adopta-card__img-wrap">
+                      <img class="adopta-card__img" src="https://adopta.club/wp-content/uploads/2024/04/valentin.jpg" alt="Valentín">
+                      <span class="adopta-card__badge tag tag-default">Perro</span>
+                      <div class="adopta-card__img-content">
+                        <p class="adopta-card__name">Valentín</p>
+                        <p class="adopta-card__desc">Pequeño, cariñoso y juguetón. Se lleva bien con otros animales y con niños.</p>
+                        <div class="adopta-card__img-tags">
+                          <span class="adopta-card__img-tag"><i class="ph ph-gender-male"></i> Macho</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-calendar-blank"></i> 1–5 años</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-map-pin"></i> Quito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Cookie -->
+                <div class="col-12 col-md-6 col-xl-4">
+                  <a class="adopta-card radius-l" href="https://adopta.club/listing/cookie/" target="_blank" rel="noopener">
+                    <div class="adopta-card__img-wrap">
+                      <img class="adopta-card__img" src="https://adopta.club/wp-content/uploads/2024/04/IMG_20231029_105815433_PORTRAIT.jpg" alt="Cookie">
+                      <span class="adopta-card__badge tag tag-default">Perro</span>
+                      <div class="adopta-card__img-content">
+                        <p class="adopta-card__name">Cookie</p>
+                        <p class="adopta-card__desc">Activa, sociable y esterilizada. Le encanta jugar y convivir con otros animales.</p>
+                        <div class="adopta-card__img-tags">
+                          <span class="adopta-card__img-tag"><i class="ph ph-gender-female"></i> Hembra</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-calendar-blank"></i> 5–10 años</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-map-pin"></i> Quito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Pepita pequeña -->
+                <div class="col-12 col-md-6 col-xl-4">
+                  <a class="adopta-card radius-l" href="https://adopta.club/listing/pepita-pequena/" target="_blank" rel="noopener">
+                    <div class="adopta-card__img-wrap">
+                      <img class="adopta-card__img" src="https://adopta.club/wp-content/uploads/listing-uploads/gallery/2024/04/IMG_20231029_111945483_PORTRAIT.jpg" alt="Pepita pequeña">
+                      <span class="adopta-card__badge tag tag-default">Perro</span>
+                      <div class="adopta-card__img-content">
+                        <p class="adopta-card__name">Pepita pequeña</p>
+                        <p class="adopta-card__desc">Pequeña y tranquila, con buena educación. Esterilizada y lista para un hogar.</p>
+                        <div class="adopta-card__img-tags">
+                          <span class="adopta-card__img-tag"><i class="ph ph-gender-female"></i> Hembra</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-calendar-blank"></i> 5–10 años</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-map-pin"></i> Quito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Chocolate — oculto en móvil -->
+                <div class="col-12 col-md-6 col-xl-4 d-none d-md-block">
+                  <a class="adopta-card radius-l" href="https://adopta.club/listing/chocolate/" target="_blank" rel="noopener">
+                    <div class="adopta-card__img-wrap">
+                      <img class="adopta-card__img" src="https://adopta.club/wp-content/uploads/2024/04/IMG_20231029_110021794_PORTRAIT-scaled.jpg" alt="Chocolate">
+                      <span class="adopta-card__badge tag tag-default">Perro</span>
+                      <div class="adopta-card__img-content">
+                        <p class="adopta-card__name">Chocolate</p>
+                        <p class="adopta-card__desc">Cariñosa, tranquila y pacífica. Se lleva bien con personas y otros animales.</p>
+                        <div class="adopta-card__img-tags">
+                          <span class="adopta-card__img-tag"><i class="ph ph-gender-female"></i> Hembra</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-calendar-blank"></i> 5–10 años</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-map-pin"></i> Quito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Muñeca — oculto en móvil -->
+                <div class="col-12 col-md-6 col-xl-4 d-none d-md-block">
+                  <a class="adopta-card radius-l" href="https://adopta.club/listing/muneca/" target="_blank" rel="noopener">
+                    <div class="adopta-card__img-wrap">
+                      <img class="adopta-card__img" src="https://adopta.club/wp-content/uploads/listing-uploads/gallery/2024/04/IMG_20231029_113739668_PORTRAIT.jpg" alt="Muñeca">
+                      <span class="adopta-card__badge tag tag-default">Perro</span>
+                      <div class="adopta-card__img-content">
+                        <p class="adopta-card__name">Muñeca</p>
+                        <p class="adopta-card__desc">Juguetona, sociable y perfecta para familias. Amigable con niños y otros animales.</p>
+                        <div class="adopta-card__img-tags">
+                          <span class="adopta-card__img-tag"><i class="ph ph-gender-female"></i> Hembra</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-calendar-blank"></i> 1–5 años</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-map-pin"></i> Quito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Lobito — oculto en móvil -->
+                <div class="col-12 col-md-6 col-xl-4 d-none d-md-block">
+                  <a class="adopta-card radius-l" href="https://adopta.club/listing/lobito-2/" target="_blank" rel="noopener">
+                    <div class="adopta-card__img-wrap">
+                      <img class="adopta-card__img" src="https://adopta.club/wp-content/uploads/listing-uploads/gallery/2024/04/IMG_20231029_104500554_PORTRAIT.jpg" alt="Lobito">
+                      <span class="adopta-card__badge tag tag-default">Perro</span>
+                      <div class="adopta-card__img-content">
+                        <p class="adopta-card__name">Lobito</p>
+                        <p class="adopta-card__desc">Activo y amigable, con pelaje blanco y negro. Se lleva bien con otros animales.</p>
+                        <div class="adopta-card__img-tags">
+                          <span class="adopta-card__img-tag"><i class="ph ph-gender-male"></i> Macho</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-calendar-blank"></i> 1–5 años</span>
+                          <span class="adopta-card__img-tag"><i class="ph ph-map-pin"></i> Quito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles del proyecto -->
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Reto -->
+          <div class="mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Reto</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up">La pandemia disparó el abandono animal en Ecuador. El problema ya existía — solo que nadie había diseñado una solución.</p>
+                      <p class="anim-uni-in-up">Cuando el confinamiento obligó a los refugios a cerrar sus puertas físicas, el abandono de mascotas se agudizó y la gestión de adopciones quedó aún más fragmentada: publicaciones en redes sociales sin estructura, grupos de mensajería difíciles de filtrar, y refugios sin ninguna visibilidad digital. No existía una plataforma centralizada, amigable y de acceso libre donde los refugios pudieran publicar sus animales y los adoptantes pudieran buscar por especie, ciudad o características específicas. Esa ausencia era, sobre todo, un problema de diseño.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Services Cards -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-services-cards-s">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <!-- item -->
+                  <div class="col-12 col-xl-8 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-services-cards-s__inner card-always-light directorio-card-inner justify-between bg-base-tint radius-l padding-4">
+                      <div class="mxd-services-cards-s__title">
+                        <p class="anim-uni-in-up">Directorio<br>de adopción</p>
+                      </div>
+                      <div class="mxd-services-cards-s__info">
+                        <div class="mxd-services-cards-s__tags">
+                          <span class="tag tag-default tag-outline anim-uni-in-up">UX/UI</span>
+                          <span class="tag tag-default tag-outline anim-uni-in-up">Diseño web</span>
+                          <span class="tag tag-default tag-outline anim-uni-in-up">Responsive</span>
+                          <span class="tag tag-default tag-outline anim-uni-in-up">Mobile-first</span>
+                        </div>
+                        <p class="anim-uni-in-up">Plataforma central donde refugios publican sus animales y adoptantes buscan por especie, ciudad o características específicas.</p>
+                      </div>
+                      <div class="mxd-services-cards-s__image image-right directorio-card-img">
+                        <!-- Notification Slider -->
+                        <div class="adoption-slider">
+                          <div class="adoption-slider__slide">
+                            <div class="adoption-slider__avatar">
+                              <img src="img/works/adopta-club/adoptante-1.jpg" alt="Refugio">
+                            </div>
+                            <div class="adoption-slider__notification">
+                              <span class="adoption-slider__icon">🐾</span>
+                              <div>
+                                <p class="adoption-slider__name">Refugio Patitas</p>
+                                <p class="adoption-slider__message">Canela ha recibido una solicitud de adopción</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="adoption-slider__slide">
+                            <div class="adoption-slider__avatar">
+                              <img src="img/works/adopta-club/adoptante-2.jpg" alt="Pareja adoptante">
+                            </div>
+                            <div class="adoption-slider__notification">
+                              <span class="adoption-slider__icon">✅</span>
+                              <div>
+                                <p class="adoption-slider__name">Andrea & Mateo</p>
+                                <p class="adoption-slider__message">Tu solicitud para Luna ha sido aprobada</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="adoption-slider__slide">
+                            <div class="adoption-slider__avatar">
+                              <img src="img/works/adopta-club/adoptante-3.jpg" alt="Adoptante">
+                            </div>
+                            <div class="adoption-slider__notification">
+                              <span class="adoption-slider__icon">🎁</span>
+                              <div>
+                                <p class="adoption-slider__name">Sofía V.</p>
+                                <p class="adoption-slider__message">Has recibido un nuevo beneficio por adoptar</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
+                  <div class="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-services-cards-s__inner justify-end bg-accent radius-l padding-4">
+                      <div class="mxd-services-cards-s__title">
+                        <p class="card-text-white anim-uni-in-up">Beneficios</p>
+                      </div>
+                      <div class="mxd-services-cards-s__info">
+                        <div class="mxd-services-cards-s__tags">
+                          <span class="tag tag-default tag-outline-opposite card-tag-white anim-uni-in-up">Descuentos</span>
+                          <span class="tag tag-default tag-outline-opposite card-tag-white anim-uni-in-up">Veterinarias</span>
+                          <span class="tag tag-default tag-outline-opposite card-tag-white anim-uni-in-up">Accesorios</span>
+                        </div>
+                        <p class="card-text-white anim-uni-in-up">Programa con empresas aliadas: descuentos exclusivos en veterinarias, accesorios y servicios de cuidado animal para quienes adoptan a través de la plataforma.</p>
+                      </div>
+                      <div class="mxd-services-cards-s__image image-top-right beneficios-img">
+                        <img src="img/works/adopta-club/tarjeta-club-3.png" alt="Beneficios">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
+                  <div class="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-services-cards-s__inner bg-additional radius-l padding-4">
+                      <div class="mxd-services-cards-s__title">
+                        <p class="card-text-white anim-uni-in-up">Donaciones</p>
+                      </div>
+                      <div class="mxd-services-cards-s__info">
+                        <div class="mxd-services-cards-s__tags">
+                          <span class="tag tag-default tag-outline card-tag-white anim-uni-in-up">PayPal</span>
+                          <span class="tag tag-default tag-outline card-tag-white anim-uni-in-up">Refugios</span>
+                          <span class="tag tag-default tag-outline card-tag-white anim-uni-in-up">Alianzas</span>
+                        </div>
+                        <p class="t-bright card-text-white anim-uni-in-up">Sistema integrado con PayPal para que adoptantes apoyen directamente a los refugios aliados de Ecuador.</p>
+                      </div>
+                      <div class="mxd-services-cards-s__image image-bottom">
+                        <img class="mxd-rotate-slow" src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Donaciones">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
+                  <div class="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in">
+                    <div class="mxd-services-cards-s__inner card-opp-always-light bg-base-opp radius-l padding-4">
+                      <div class="mxd-services-cards-s__title">
+                        <p class="opposite anim-uni-in-up">Perfil de<br>mascota</p>
+                      </div>
+                      <div class="mxd-services-cards-s__info">
+                        <div class="mxd-services-cards-s__tags">
+                          <span class="tag tag-default tag-outline-opposite anim-uni-in-up">Formulario</span>
+                          <span class="tag tag-default tag-outline-opposite anim-uni-in-up">Fotos</span>
+                          <span class="tag tag-default tag-outline-opposite anim-uni-in-up">Filtros</span>
+                        </div>
+                        <p class="t-opposite anim-uni-in-up">Cada animal tiene su propio perfil con fotos, descripción, especie, edad y ciudad. La solicitud de adopción se hace desde el mismo sitio: un formulario rápido cuya respuesta llega al refugio por correo.</p>
+                      </div>
+                      <div class="mxd-services-cards-s__image adopta-perfil-img">
+                        <img src="https://adopta.club/wp-content/uploads/2023/10/chrome-capture-2023-9-21.gif" alt="Perfil de mascota">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
+                  <div class="col-12 col-xl-4 mxd-services-cards-s__item adopciones-item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-services-cards-s__inner card-always-light justify-end bg-base-tint radius-l padding-4">
+                      <div class="mxd-services-cards-s__title">
+                        <p class="anim-uni-in-up"><span class="js-counter-adopciones">0</span>+<br>adopciones</p>
+                      </div>
+                      <div class="mxd-services-cards-s__info">
+                        <div class="mxd-services-cards-s__tags">
+                          <span class="tag tag-default tag-outline anim-uni-in-up">Ecuador</span>
+                          <span class="tag tag-default tag-outline anim-uni-in-up">20+ refugios</span>
+                          <span class="tag tag-default tag-outline anim-uni-in-up">Impacto social</span>
+                        </div>
+                        <p class="anim-uni-in-up">En su primer año de funcionamiento: más de 200 adopciones, 20+ refugios apoyados y 10.000 seguidores en Instagram.</p>
+                      </div>
+                      <div class="mxd-services-cards-s__image image-top gato-adopciones">
+                        <img src="img/works/adopta-club/gato.png" alt="Impacto social" class="d-none d-xl-block">
+                        <img src="img/works/adopta-club/gato%20-%20copia.png" alt="Impacto social" class="d-xl-none">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solución -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solución</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up">Diseñé y desarrollé adopta.club de cero en plena pandemia: un directorio de animales en adopción con perfiles individuales por mascota, sistema de registro para refugios y adoptantes, y publicación guiada de animales disponibles. La experiencia de usuario fue diseñada para que cualquier persona — sin conocimientos técnicos — pudiera publicar un animal en menos de tres minutos.</p>
+                      <p class="anim-uni-in-up">Cada perfil incluye descripción, fotos, especie, edad y ciudad. Desde el mismo perfil, el interesado completa un formulario rápido de solicitud de adopción: al enviarlo, el refugio recibe un correo con el perfil completo del posible adoptante y un botón para ponerse en contacto. Para los refugios aliados, se integró un sistema de donaciones vía PayPal y un programa de beneficios con empresas aliadas: descuentos en veterinarias, accesorios y servicios de cuidado animal. En su primer año de funcionamiento, adopta.club facilitó más de 200 adopciones, apoyó con donaciones a más de 20 refugios en Ecuador y creció a más de 10.000 seguidores en Instagram.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+
+          <!-- Project Block - Parallax Fullwidth Image Start -->
+          <div class="mxd-project__block mxd-grid-item no-margin">
+            <div class="mxd-divider">
+              <div class="mxd-divider__image prj-details-img-02 parallax-img" style="background-image: url('img/works/adopta-club/final-feliz-1.jpg');"></div>
+            </div>
+          </div>
+          <!-- Project Block - Parallax Fullwidth Image End -->
+
+          <!-- Testimonials Start -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Lo que dicen</h2>
+                  </div>
+                  <div class="mxd-project__content">
+                    <p class="anim-uni-in-up">Testimonios de adoptantes y refugios que confiaron en adopta.club para encontrar o dar un hogar.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-7 mxd-grid-item no-margin">
+                  <div class="testimonials-slider overflow-hidden anim-uni-in-up">
+                    <div class="swiper-testimonials">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <div class="mxd-testimonials-card bg-base-tint radius-m">
+                            <div class="mxd-testimonials-card__content">
+                              <div class="mxd-testimonials-card__text">
+                                <p class="anim-uni-in-up">Gracias a adopta.club encontré a mi perra Luna en menos de una semana. El proceso fue clarísimo: llené el formulario desde el perfil de ella y al día siguiente el refugio ya me había escrito. No podría ser más fácil.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-testimonials-card__author">
+                              <p class="mxd-testimonials-card__name anim-uni-in-up">Valeria M.</p>
+                              <p class="mxd-testimonials-card__position t-small anim-uni-in-up">Adoptante — Quito, Ecuador</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="mxd-testimonials-card bg-base-tint radius-m">
+                            <div class="mxd-testimonials-card__content">
+                              <div class="mxd-testimonials-card__text">
+                                <p class="anim-uni-in-up">Publicar nuestros animales en adopta.club nos dio visibilidad que no teníamos en redes. Desde que nos unimos, aumentamos las adopciones en un 40%. La plataforma es intuitiva y el equipo siempre está disponible.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-testimonials-card__author">
+                              <p class="mxd-testimonials-card__name anim-uni-in-up">Refugio Aliado</p>
+                              <p class="mxd-testimonials-card__position t-small anim-uni-in-up">Refugio aliado — Quito, Ecuador</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="mxd-testimonials-card bg-base-tint radius-m">
+                            <div class="mxd-testimonials-card__content">
+                              <div class="mxd-testimonials-card__text">
+                                <p class="anim-uni-in-up">Lo que más me gustó fue que podía filtrar por ciudad y especie. Encontré exactamente lo que buscaba. Adopté a Milo hace 6 meses y es lo mejor que me ha pasado.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-testimonials-card__author">
+                              <p class="mxd-testimonials-card__name anim-uni-in-up">Andrés R.</p>
+                              <p class="mxd-testimonials-card__position t-small anim-uni-in-up">Adoptante — Quito, Ecuador</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="mxd-testimonials-card bg-base-tint radius-m">
+                            <div class="mxd-testimonials-card__content">
+                              <div class="mxd-testimonials-card__text">
+                                <p class="anim-uni-in-up">Su dedicación y ágil gestión hace que muchos perritos sin hogares reciban oportunidades de tener uno rápidamente. Gracias a Adopta, el Club de Bienestar Animal YT ha logrado recibir más solicitudes de adopciones para alrededor de 50 perritos sin hogares. Sin duda alguna los mejores.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-testimonials-card__author">
+                              <p class="mxd-testimonials-card__name anim-uni-in-up">Club Bienestar Animal de Yachay</p>
+                              <p class="mxd-testimonials-card__position t-small anim-uni-in-up">Refugio aliado — Urcuquí, Ecuador</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-button-prev mxd-slider-btn mxd-slider-btn-round-prev animate-card-2">
+                        <a class="btn btn-round btn-round-small btn-outline slide-left anim-no-delay" href="#0" aria-label="Previous Slide">
+                          <i class="ph ph-arrow-left"></i>
+                        </a>
+                      </div>
+                      <div class="swiper-button-next mxd-slider-btn mxd-slider-btn-round-next animate-card-2">
+                        <a class="btn btn-round btn-round-small btn-outline slide-right anim-no-delay" href="#0" aria-label="Next Slide">
+                          <i class="ph ph-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="testimonials-slider__shadow"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonials End -->
+
+          <!-- Navegación entre proyectos -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project__nav">
+              <div class="mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 mxd-project__navitem left mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="project-details-ituran.html">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Anterior</span>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-ituran.html">
+                      <span>Proyecto anterior</span>
+                    </a>
+                  </div>
+                  <div class="col-6 mxd-project__navitem right mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="project-details-avl.html">
+                      <span class="btn-caption">Siguiente</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-avl.html">
+                      <span>Próximo proyecto</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- CTA -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg mxd-promo__bg--gato"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Page Content End -->
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      // Contador animado — se activa cada vez que el elemento entra o sale del viewport
+      (function () {
+        var el = document.querySelector('.js-counter-adopciones');
+        if (!el) return;
+        var target = 200;
+        var duration = 1800;
+        var raf = null;
+
+        function countUp() {
+          cancelAnimationFrame(raf);
+          var start = null;
+          function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            // easeOutQuart
+            var ease = 1 - Math.pow(1 - progress, 4);
+            el.textContent = Math.floor(ease * target);
+            if (progress < 1) {
+              raf = requestAnimationFrame(step);
+            } else {
+              el.textContent = target;
+            }
+          }
+          raf = requestAnimationFrame(step);
+        }
+
+        function reset() {
+          cancelAnimationFrame(raf);
+          el.textContent = '0';
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              countUp();
+            } else {
+              reset();
+            }
+          });
+        }, { threshold: 0.6 });
+
+        observer.observe(el);
+      })();
+
+      (function () {
+        var slides = document.querySelectorAll('.adoption-slider__slide');
+        if (!slides.length) return;
+        var current = 0;
+        var total = slides.length;
+
+        function show(index) {
+          var slide = slides[index];
+          var avatar = slide.querySelector('.adoption-slider__avatar');
+          var notif  = slide.querySelector('.adoption-slider__notification');
+          slide.classList.add('is-active');
+          setTimeout(function () { avatar.classList.add('avatar-in'); }, 60);
+          setTimeout(function () { notif.classList.add('notif-in'); }, 1300);
+        }
+
+        function hide(index, cb) {
+          var slide = slides[index];
+          var avatar = slide.querySelector('.adoption-slider__avatar');
+          var notif  = slide.querySelector('.adoption-slider__notification');
+          notif.classList.remove('notif-in');
+          setTimeout(function () { avatar.classList.remove('avatar-in'); }, 160);
+          setTimeout(function () { slide.classList.remove('is-active'); cb(); }, 560);
+        }
+
+        function cycle() {
+          hide(current, function () {
+            current = (current + 1) % total;
+            show(current);
+            setTimeout(cycle, 4000);
+          });
+        }
+
+        show(current);
+        setTimeout(cycle, 4000);
+      })();
+
+    </script>
+
+  </body>
+
+</html>

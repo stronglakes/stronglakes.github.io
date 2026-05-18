@@ -1,0 +1,661 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Luis Fernando Fuertes — UX Designer &amp; Software Engineer</title>
+    <meta name="description" content="Luis Fernando Fuertes (@stronglakes) — UX/UI Designer, Software Engineer y Data Analyst. Apasionado por construir productos digitales con propósito. Quito, Ecuador.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, UX designer, software engineer, data analyst, portafolio, Ecuador">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="Luis Fernando Fuertes — UX Designer &amp; Software Engineer">
+    <meta property="og:description" content="Portafolio de Luis Fernando Fuertes (@stronglakes).">
+    <meta property="og:url" content="https://stronglakes.github.io/">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+      @keyframes float-updown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+      .img-float { animation: float-updown 4s ease-in-out infinite; will-change: transform; }
+      .subin-text-block { display:flex; flex-direction:column; gap:0.9rem; }
+      .subin-text-block .t1 { margin:0; color:var(--t-bright); }
+      .subin-text-block .t2 { margin:0; color:var(--t-bright); }
+      .subin-image-wrap .image-2 { right:-220px !important; }
+      @media only screen and (max-width: 1199px) {
+        .subin-image-wrap { position:absolute !important; width:auto !important; max-width:none !important; margin-top:0 !important; right:0 !important; top:0 !important; }
+        .subin-image-wrap .image-2 { display:block !important; width:160px !important; right:-10px !important; top:-20px !important; bottom:auto !important; position:absolute !important; opacity:0.5; }
+      }
+    </style>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <main id="mxd-page-content" class="mxd-page-content">
+
+      <!-- Hero Section Start -->
+      <div class="mxd-section">
+        <div class="mxd-hero-09">
+          <div class="mxd-hero-09__wrap loading-wrap">
+            <div class="mxd-hero-09__headline">
+              <div class="hero-09-headline__caption loading__item">
+                <p>Diseño UX/UI &middot; Ingeniería de Software &middot; Data Analytics &middot; IA Aplicada</p>
+              </div>
+              <div class="hero-09-headline__title loading__item">
+                <h1 class="hero-09-headline__hidden">Luis Fernando Fuertes</h1>
+                <!-- Mobile SVG name -->
+                <svg class="hero-09-svg-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" xml:space="preserve">
+                  <text x="0" y="38" font-family="sans-serif" font-size="40" font-weight="800" fill="currentColor" letter-spacing="-2">Luis</text>
+                  <text x="0" y="78" font-family="sans-serif" font-size="40" font-weight="800" fill="currentColor" letter-spacing="-2">Fernando</text>
+                </svg>
+                <!-- Desktop SVG name -->
+                <svg class="hero-09-svg-desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 56" xml:space="preserve">
+                  <text x="0" y="48" font-family="sans-serif" font-size="52" font-weight="800" fill="currentColor" letter-spacing="-3">Luis Fernando Fuertes</text>
+                </svg>
+              </div>
+              <div class="hero-09-headline__tags loading__fade">
+                <span class="tag tag-default tag-outline">UX/UI Design</span>
+                <span class="tag tag-default tag-outline">Software Engineering</span>
+                <span class="tag tag-default tag-outline">Data Analytics</span>
+                <span class="tag tag-default tag-outline">IA Aplicada</span>
+                <span class="tag tag-default tag-outline">Figma</span>
+                <span class="tag tag-default tag-outline">WordPress</span>
+                <span class="tag tag-default tag-outline">HTML/CSS</span>
+                <span class="tag tag-default tag-outline">JavaScript</span>
+                <span class="tag tag-default tag-outline">Power BI</span>
+                <span class="tag tag-default tag-outline">Scrum</span>
+                <span class="tag tag-default tag-outline">Design Sprint</span>
+                <span class="tag tag-default tag-outline">E-commerce</span>
+                <span class="tag tag-default tag-outline">Prompt Engineering</span>
+                <span class="tag tag-default tag-outline">Productos Digitales</span>
+              </div>
+            </div>
+            <div class="mxd-hero-09__objects">
+              <div class="hero-09-objects__image loading__item">
+                <img class="mxd-move" src="img/hero/hero-img.webp" alt="Luis Fernando Fuertes">
+              </div>
+              <div class="hero-09-objects__item item-01 loading__item">
+                <div class="mxd-counter horizontal">
+                  <p id="stats-counter-1" class="mxd-counter__number mxd-stats-number xsmall">0</p>
+                  <p class="mxd-counter__descr t-140 t-bright t-small">Años de<br>experiencia</p>
+                </div>
+              </div>
+              <div class="hero-09-objects__item item-02 loading__item">
+                <div class="mxd-counter horizontal">
+                  <p id="stats-counter-2" class="mxd-counter__number mxd-stats-number xsmall">0</p>
+                  <p class="mxd-counter__descr t-140 t-bright t-small">Proyectos<br>completados</p>
+                </div>
+              </div>
+              <div class="hero-09-objects__item item-03 loading__item">
+                <div class="mxd-hero__mark">
+                  <span class="mark-icon"></span>
+                  <span class="mark-text">Disponible para freelance</span>
+                </div>
+              </div>
+            </div>
+            <div class="mxd-hero-09__more loading__fade">
+              <a class="btn btn-line-default btn-anim slide-down" href="#projects">
+                <span class="btn-caption">Ver proyectos</span>
+                <i class="ph-bold ph-arrow-elbow-right-down"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero Section End -->
+
+      <!-- Projects Section Start -->
+      <div id="projects" class="mxd-section padding-hero-09 padding-grid-pre-mtext">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="mxd-pinned-projects">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+
+                  <!-- Título fijo -->
+                  <div class="col-12 col-xl-5 mxd-pinned-projects__static">
+                    <div class="mxd-pinned-projects__static-inner no-margin">
+                      <div class="mxd-section-title no-margin-desktop">
+                        <div class="container-fluid p-0">
+                          <div class="row g-0">
+                            <div class="col-12 mxd-grid-item no-margin">
+                              <div class="mxd-section-title__title">
+                                <h2 class="h2-large reveal-type">Proyectos</h2>
+                              </div>
+                            </div>
+                            <div class="col-12 mxd-grid-item no-margin">
+                              <div class="mxd-section-title__controls anim-uni-in-up">
+                                <a class="btn btn-anim btn-default btn-outline slide-right-up" href="works-masonry.html">
+                                  <span class="btn-caption">Ver todos</span>
+                                  <i class="ph-bold ph-arrow-up-right"></i>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Proyectos (scroll) -->
+                  <div class="col-12 col-xl-7 mxd-pinned-projects__scroll">
+                    <div class="mxd-pinned-projects__scroll-inner mxd-grid-item no-margin">
+
+                      <!-- Visit Quito -->
+                      <div class="mxd-project-item">
+                        <a class="mxd-project-item__media masonry-media anim-uni-in-up" href="project-details-visit-quito.html">
+                          <video class="mxd-project-item__preview masonry-preview parallax-img-small" autoplay muted loop playsinline style="object-fit:cover;width:100%;">
+                            <source src="video/visit-quito.mp4" type="video/mp4">
+                          </video>
+                          <div class="mxd-project-item__tags">
+                            <span class="tag tag-default tag-permanent">UX/UI</span>
+                            <span class="tag tag-default tag-permanent">Desarrollo Web</span>
+                            <span class="tag tag-default tag-permanent">Turismo</span>
+                          </div>
+                        </a>
+                        <div class="mxd-project-item__promo">
+                          <div class="mxd-project-item__name">
+                            <a class="anim-uni-in-up" href="project-details-visit-quito.html"><span>Visit Quito</span> &mdash; guía digital de experiencias en la capital</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Farmacias Económicas -->
+                      <div class="mxd-project-item">
+                        <a class="mxd-project-item__media masonry-media anim-uni-in-up" href="project-details-farmacias-economicas.html">
+                          <div class="mxd-project-item__preview masonry-preview preview-image-7 parallax-img-small" style="background-image: url('img/works/farmacias-economicas/proyecto-farmacias-economicas.png');"></div>
+                          <div class="mxd-project-item__tags">
+                            <span class="tag tag-default tag-permanent">AI Chatbot</span>
+                            <span class="tag tag-default tag-permanent">E-commerce</span>
+                            <span class="tag tag-default tag-permanent">Rediseño UX</span>
+                          </div>
+                        </a>
+                        <div class="mxd-project-item__promo">
+                          <div class="mxd-project-item__name">
+                            <a class="anim-uni-in-up" href="project-details-farmacias-economicas.html"><span>Farmacias Económicas</span> &mdash; rediseño de e-commerce para cadena farmacéutica</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Subin Law -->
+                      <div class="mxd-project-item anim-uni-scale-in">
+                        <div class="mxd-services-cards__inner justify-between bg-base-tint radius-l padding-5x4" style="position:relative;overflow:hidden;width:100%;max-width:100%;box-sizing:border-box;">
+                          <div class="mxd-services-cards__controls">
+                            <span class="tag tag-default tag-outline" style="font-size:1.5rem;padding:10px 22px;">
+                              <i class="ph ph-sparkle"></i>&nbsp; Próximamente
+                            </span>
+                          </div>
+                          <div class="mxd-services-cards__title width-60">
+                            <p class="anim-uni-in-up">Subin Law<br>Migración CMS</p>
+                          </div>
+                          <div class="mxd-services-cards__info width-60">
+                            <div class="mxd-services-cards__tags">
+                              <span class="tag tag-default tag-permanent anim-uni-in-up">Sanity → WP</span>
+                              <span class="tag tag-default tag-permanent anim-uni-in-up">Legal · NYC</span>
+                              <span class="tag tag-default tag-permanent anim-uni-in-up">IA &amp; Claude</span>
+                            </div>
+                            <div class="subin-text-block anim-uni-in-up">
+                              <p class="t1"><strong>Migración completada.</strong> Lideré 6 desarrolladores para migrar +130 páginas de Sanity CMS a WordPress para Subin Law, NYC — entregado en una semana.</p>
+                              <p class="t2">El proyecto está en rediseño activo: reutilizando el contenido original como base para construir una nueva versión con IA integrada.</p>
+                            </div>
+                          </div>
+                          <div class="mxd-services-cards__image mxd-services-cards-image-3 subin-image-wrap">
+                            <img class="image-2 img-float" src="img/works/subin-migracion/subin-migracion.png" alt="Subin — Migración CMS">
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Projects Section End -->
+
+      <!-- Marquee -->
+      <div class="mxd-section padding-mtext-pre-stack">
+        <div class="mxd-container fullwidth-container">
+          <div class="mxd-block">
+            <div class="marquee marquee-right--gsap muted-extra">
+              <div class="marquee__toright">
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">UX/UI</p>
+                  <div class="marquee__image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor"><path d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4z"/></svg></div>
+                </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Developer</p>
+                  <div class="marquee__image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor"><path d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4z"/></svg></div>
+                </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Diseño UX/UI</p>
+                  <div class="marquee__image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor"><path d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4z"/></svg></div>
+                </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Desarrollo &amp; Productos Digitales</p>
+                  <div class="marquee__image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor"><path d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4z"/></svg></div>
+                </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Data Analytics &amp; BI</p>
+                  <div class="marquee__image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor"><path d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4z"/></svg></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Stacking Cards Start -->
+      <div class="mxd-section padding-stacked-section">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block mxd-grid-item no-margin">
+            <div class="content__block">
+              <div class="stack-wrapper">
+                <div class="stack-offset"></div>
+                <div class="services-stack">
+
+                  <div class="stack-item">
+                    <div class="mxd-services-stack__inner justify-between bg-base-opp">
+                      <div class="mxd-services-stack__controls">
+                        <a class="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay" href="services.html" aria-label="Servicios"><i class="ph ph-arrow-up-right"></i></a>
+                      </div>
+                      <div class="mxd-services-stack__title width-60">
+                        <h3 class="opposite">Diseño UX/UI</h3>
+                      </div>
+                      <div class="mxd-services-stack__info width-60">
+                        <div class="mxd-services-cards__tags">
+                          <span class="tag tag-default tag-outline-opposite">Research</span>
+                          <span class="tag tag-default tag-outline-opposite">Claude Design</span>
+                          <span class="tag tag-default tag-outline-opposite">Prototipos</span>
+                          <span class="tag tag-default tag-outline-opposite">Figma</span>
+                          <span class="tag tag-default tag-outline-opposite">Design System</span>
+                        </div>
+                        <p class="t-opposite">Interfaces intuitivas centradas en el usuario. Desde la investigación hasta el prototipo interactivo, diseño experiencias que conectan a las personas con tu producto.</p>
+                      </div>
+                      <div class="services-stack__image">
+                        <img class="service-img service-img-s" src="img/services/ux.webp" alt="UX/UI">
+                        <img class="service-img service-img-m" src="img/services/ux.webp" alt="UX/UI">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stack-item">
+                    <div class="mxd-services-stack__inner justify-between bg-accent">
+                      <div class="mxd-services-stack__controls">
+                        <a class="btn btn-round btn-round-large btn-base slide-right-up anim-no-delay" href="services.html" aria-label="Servicios"><i class="ph ph-arrow-up-right"></i></a>
+                      </div>
+                      <div class="mxd-services-stack__title width-60">
+                        <h3 class="opposite">Desarrollo &amp;<br>Productos Digitales</h3>
+                      </div>
+                      <div class="mxd-services-stack__info width-60">
+                        <div class="mxd-services-cards__tags">
+                          <span class="tag tag-default tag-outline-opposite">HTML/CSS/JS</span>
+                          <span class="tag tag-default tag-outline-opposite">WordPress</span>
+                          <span class="tag tag-default tag-outline-opposite">E-commerce</span>
+                          <span class="tag tag-default tag-outline-opposite">Scrum</span>
+                          <span class="tag tag-default tag-outline-opposite">IA Integrada</span>
+                          <span class="tag tag-default tag-outline-opposite">LOPDP</span>
+                        </div>
+                        <p class="t-opposite">Transformo ideas en productos digitales funcionales y escalables. Gestión de proyectos de inicio a fin integrando inteligencia artificial para acelerar resultados, con cumplimiento de la Ley Orgánica de Protección de Datos Personales (LOPDP) de Ecuador.</p>
+                      </div>
+                      <div class="services-stack__image">
+                        <img class="service-img service-img-s" src="img/services/dev.webp" alt="Desarrollo">
+                        <img class="service-img service-img-m" src="img/services/dev.webp" alt="Desarrollo">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stack-item">
+                    <div class="mxd-services-stack__inner radius-dark justify-between bg-base-tint">
+                      <div class="mxd-services-stack__controls">
+                        <a class="btn btn-round btn-round-large btn-opposite slide-right-up anim-no-delay" href="services.html" aria-label="Servicios"><i class="ph ph-arrow-up-right"></i></a>
+                      </div>
+                      <div class="mxd-services-stack__title width-60">
+                        <h3>Data Analytics<br>&amp; Business Intelligence</h3>
+                      </div>
+                      <div class="mxd-services-stack__info width-60">
+                        <div class="mxd-services-cards__tags">
+                          <span class="tag tag-default tag-outline">Power BI</span>
+                          <span class="tag tag-default tag-outline">Dashboards</span>
+                          <span class="tag tag-default tag-outline">Visualización</span>
+                          <span class="tag tag-default tag-outline">Análisis</span>
+                        </div>
+                        <p>Convierto datos en decisiones. Diseño dashboards que revelan patrones y apoyan la toma de decisiones estratégicas.</p>
+                      </div>
+                      <div class="services-stack__image">
+                        <img class="service-img service-img-s mxd-rotate-slow" src="img/services/bi.webp" alt="Data Analytics">
+                        <img class="service-img service-img-m mxd-rotate-slow" src="img/services/bi.webp" alt="Data Analytics">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stack-item">
+                    <div class="mxd-services-stack__inner justify-between bg-base-opp">
+                      <div class="mxd-services-stack__controls">
+                        <a class="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay" href="services.html" aria-label="Servicios"><i class="ph ph-arrow-up-right"></i></a>
+                      </div>
+                      <div class="mxd-services-stack__title width-60">
+                        <h3 class="opposite">IA Aplicada &amp;<br>Automatización</h3>
+                      </div>
+                      <div class="mxd-services-stack__info width-60">
+                        <div class="mxd-services-cards__tags">
+                          <span class="tag tag-default tag-outline-opposite">Prompt Engineering</span>
+                          <span class="tag tag-default tag-outline-opposite">Automatización</span>
+                          <span class="tag tag-default tag-outline-opposite">Chatbots</span>
+                          <span class="tag tag-default tag-outline-opposite">Flujos IA</span>
+                        </div>
+                        <p class="t-opposite">Integro IA en tus flujos de trabajo para automatizar tareas, crear asistentes inteligentes y potenciar tu negocio con las últimas tecnologías del mercado.</p>
+                      </div>
+                      <div class="services-stack__image">
+                        <img class="service-img service-img-s" src="img/services/ia.webp" alt="IA">
+                        <img class="service-img service-img-m" src="img/services/ia.webp" alt="IA">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Services End -->
+
+      <!-- Experience Section Start -->
+      <div class="mxd-section padding-grid-pre-pinned">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="mxd-pinned-universal">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <div class="col-12 col-xl-5 mxd-pinned-universal__static">
+                    <div class="mxd-pinned-universal__static-inner no-margin">
+                      <div class="mxd-section-title h2-only no-margin-desktop">
+                        <div class="container-fluid p-0"><div class="row g-0"><div class="col-12 mxd-grid-item no-margin">
+                          <div class="mxd-section-title__title card-split-title">
+                            <h2 class="reveal-type">Experiencia</h2>
+                          </div>
+                        </div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-7 mxd-pinned-universal__scroll">
+                    <div class="mxd-pinned-universal__scroll-inner mxd-grid-item no-margin">
+                      <div class="mxd-res-list">
+
+                        <div class="mxd-res-list__item">
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                          <div class="mxd-res-list__content">
+                            <div class="mxd-res-list__data">
+                              <div class="mxd-res-list__title">
+                                <h3 class="anim-uni-in-up">UX Designer</h3>
+                                <p class="mxd-res-list__source anim-uni-in-up">en Villagomez Capital | Andelytica</p>
+                              </div>
+                              <div class="mxd-res-list__descr">
+                                <p class="anim-uni-in-up">Diseño de experiencias de usuario para productos financieros digitales. Investigación, arquitectura de información y prototipos de alta fidelidad.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-res-list__year"><p class="anim-uni-in-up">2025 — actual</p></div>
+                          </div>
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                        </div>
+
+                        <div class="mxd-res-list__item">
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                          <div class="mxd-res-list__content">
+                            <div class="mxd-res-list__data">
+                              <div class="mxd-res-list__title">
+                                <h3 class="anim-uni-in-up">UX/UI Developer</h3>
+                                <p class="mxd-res-list__source anim-uni-in-up">• 02/2023 - Pasante de Ingeniería de Software</p>
+                                <p class="mxd-res-list__source anim-uni-in-up">en <a href="https://nkcore.com/" target="_blank">NK Technologies S.A.S.</a></p>
+                                
+                              </div>
+                              <div class="mxd-res-list__descr">
+                                <p class="anim-uni-in-up">Diseño y desarrollo de productos digitales, e-commerce y gestión de proyectos en LATAM. Análisis de cumplimiento de la Ley de Protección de Datos en Ecuador.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-res-list__year"><p class="anim-uni-in-up">04/2023 — 03/2025</p></div>
+                          </div>
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                        </div>
+
+                        <div class="mxd-res-list__item">
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                          <div class="mxd-res-list__content">
+                            <div class="mxd-res-list__data">
+                              <div class="mxd-res-list__title">
+                                <h3 class="anim-uni-in-up">Founder &amp; Developer</h3>
+                                <p class="mxd-res-list__source anim-uni-in-up">en <a href="https://www.adopta.club" target="_blank">adopta.club</a></p>
+                              </div>
+                              <div class="mxd-res-list__descr">
+                                <p class="anim-uni-in-up">Plataforma de adopción animal con más de 200 adopciones en su primer año. Tarjetas NFC para adoptantes y gestión de aliados estratégicos.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-res-list__year"><p class="anim-uni-in-up">2020</p></div>
+                          </div>
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                        </div>
+
+                        <div class="mxd-res-list__item">
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                          <div class="mxd-res-list__content">
+                            <div class="mxd-res-list__data">
+                              <div class="mxd-res-list__title">
+                                <h3 class="anim-uni-in-up">Asistente de Operaciones</h3>
+                                <p class="mxd-res-list__source anim-uni-in-up">en <a href="#0">SEOPI S.A.S.</a></p>
+                              </div>
+                              <div class="mxd-res-list__descr">
+                                <p class="anim-uni-in-up">Soporte operativo</p>
+                              </div>
+                            </div>
+                            <div class="mxd-res-list__year"><p class="anim-uni-in-up">2020 — 2023</p></div>
+                          </div>
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Experience End -->
+
+
+      <!-- About / Manifest -->
+      <div class="mxd-section padding-pre-grid">
+        <div class="mxd-container grid-l-container">
+          <div class="mxd-block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-6 mxd-grid-item-l no-margin anim-uni-in-up">
+                  <div class="mxd-block__image">
+                    <img src="img/hero/Luis-Fernando-Fuertes-cuadrada.png" alt="Luis Fernando Fuertes">
+                    <a class="btn-rotating btn-rotating-blur-outline ver-02" href="contact.html" style="position:absolute;top:24px;right:24px;z-index:2;">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 160 160" style="enable-background:new 0 0 160 160;" xml:space="preserve" class="btn-rotating__text animate-rotation" data-value="360">
+                        <defs><path id="textPathAbout" d="M149.7,80c0,38.5-31.2,69.7-69.7,69.7S10.3,118.5,10.3,80S41.5,10.3,80,10.3S149.7,41.5,149.7,80z"/></defs>
+                        <g><use xlink:href="#textPathAbout" fill="none"></use><text><textPath xlink:href="#textPathAbout">Cotiza tu proyecto hoy * Cotiza tu proyecto hoy </textPath></text></g>
+                      </svg>
+                      <img class="btn-rotating__image" src="img/hero/hero-img.webp" alt="Luis Fernando Fuertes" style="width:8rem;height:auto;object-fit:initial;">
+                    </a>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item-l no-margin" style="display:flex;flex-direction:column;">
+                  <div class="mxd-block__content content-flex" style="flex:1;justify-content:center;gap:0;">
+                    <div class="mxd-block__manifest">
+                      <p class="mxd-manifest mxd-manifest-l reveal-type">Soy fan de los proyectos con propósito. Combino diseño, ingeniería e inteligencia artificial para construir soluciones que realmente cambian algo.</p>
+                      <div class="mxd-manifest__controls anim-uni-in-up">
+                        <div class="mxd-btngroup">
+                          <a class="btn btn-anim btn-default btn-accent slide-right-up" href="works-masonry.html">
+                            <span class="btn-caption">Ver proyectos</span>
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                          </a>
+                          <a class="btn btn-anim btn-default btn-outline slide-down" href="https://stronglakes.github.io/documentos/Luis%20Fernando%20Fuertes%20-%20CV.pdf" target="_blank">
+                            <span class="btn-caption">Descargar CV</span>
+                            <i class="ph-bold ph-arrow-down"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Section Start -->
+      <div class="mxd-section padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="mxd-pinned-universal">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <div class="col-12 col-xl-5 mxd-pinned-universal__static">
+                    <div class="mxd-pinned-universal__static-inner no-margin">
+                      <div class="mxd-section-title h2-only no-margin-desktop">
+                        <div class="container-fluid p-0"><div class="row g-0"><div class="col-12 mxd-grid-item no-margin">
+                          <div class="mxd-section-title__title card-split-title">
+                            <h2 class="reveal-type">Educación</h2>
+                          </div>
+                        </div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-7 mxd-pinned-universal__scroll">
+                    <div class="mxd-pinned-universal__scroll-inner mxd-grid-item no-margin">
+                      <div class="mxd-res-list">
+
+                        <div class="mxd-res-list__item">
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                          <div class="mxd-res-list__content">
+                            <div class="mxd-res-list__data">
+                              <div class="mxd-res-list__title">
+                                <h3 class="anim-uni-in-up">Ingeniería de Software</h3>
+                                <p class="mxd-res-list__source anim-uni-in-up">en <a href="#0" target="_blank">Universidad Iberoamericana del Ecuador (UNIBE)</a></p>
+                              </div>
+                              <div class="mxd-res-list__descr">
+                                <p class="anim-uni-in-up">Titulación con proyecto de Business Intelligence aplicado a sistemas académicos. Especialización en análisis de datos y desarrollo de software de calidad.</p>
+                              </div>
+                            </div>
+                            <div class="mxd-res-list__year"><p class="anim-uni-in-up">2020 — 2024</p></div>
+                          </div>
+                          <div class="mxd-res-list__divider anim-uni-in-up"></div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Education End -->
+
+
+      <!-- CTA Section -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      const statsCounter1 = new countUp.CountUp("stats-counter-1", 5, optionsPlus);
+      const statsCounter2 = new countUp.CountUp("stats-counter-2", 15, optionsPlus);
+      statsCounter1.start();
+      statsCounter2.start();
+    </script>
+    
+  </body>
+</html>

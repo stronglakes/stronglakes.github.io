@@ -1,0 +1,1064 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>AVL Abogados — Mailing | Luis Fernando Fuertes</title>
+    <meta name="description" content="Diseño y producción de campañas de email marketing para AVL Abogados: templates HTML responsivos, segmentación y métricas.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, AVL, email marketing, mailing, HTML, campañas, abogados">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="AVL Abogados — Mailing | Luis Fernando Fuertes">
+    <meta property="og:description" content="Campañas de email marketing para AVL Abogados con templates HTML responsivos y segmentación de audiencias.">
+    <meta property="og:url" content="https://stronglakes.github.io/project-details-avl.html">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <style>
+  /* === Mailing AVL — Newsletter interactiva bidireccional === */
+
+  /* Layout sticky */
+  #avl-email-section { padding: 0; }
+  .avl-sticky-wrap { position: relative; height: 240vh; }
+  .avl-sticky-inner {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+  }
+
+  /* Contenedor del email */
+  .avl-ec {
+    width: 100%;
+    max-width: 580px;
+    background: #f0f0f0;
+    background-image: radial-gradient(circle, #d0d0d0 1px, transparent 1px);
+    background-size: 18px 18px;
+    border-top: 4px solid #c0392b;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 6px 36px rgba(0,0,0,0.12);
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  /* Chrome: campos De / Para / Asunto */
+  .avl-ec-chrome { background: #fafafa; padding: 0 22px; border-bottom: 1px solid #ececec; }
+  .avl-ec-field {
+    display: flex;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid #f2f2f2;
+    opacity: 0;
+  }
+  .avl-ec-field:last-child { border-bottom: none; }
+  .avl-ec-flabel {
+    min-width: 58px;
+    font-size: 10.5px;
+    color: #b8b8b8;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .avl-ec-fvalue { font-size: 13px; color: #1a1a1a; min-height: 1.1em; }
+
+  /* Separador animado */
+  .avl-ec-sep { height: 1px; background: #e2e2e2; width: 0%; }
+
+  /* Header newsletter */
+  .avl-ec-header {
+    background: #fff;
+    padding: 20px 26px 16px;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+    opacity: 0;
+  }
+  .avl-ec-logo-row { display: inline-flex; align-items: center; gap: 14px; }
+  .avl-ec-logo {
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+    padding: 9px 30px 9px 18px;
+    line-height: 1;
+    display: inline-block;
+  }
+  .avl-ec-subtitle {
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    color: #bbb;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Banda ALERTA LEGAL */
+  .avl-ec-alert {
+    background: linear-gradient(90deg, #c0392b 0%, #a93226 100%);
+    padding: 8px 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .avl-ec-alert-text {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .avl-ec-alert-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+    animation: avl-pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes avl-pulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+  /* Hero */
+  .avl-ec-hero {
+    height: 172px;
+    background: linear-gradient(155deg, #0d0b1a 0%, #1a1a2e 45%, #0f2741 100%);
+    position: relative;
+    overflow: hidden;
+    clip-path: inset(0 0 100% 0);
+  }
+  .avl-ec-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 80% 30%, rgba(192,57,43,0.28) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 15% 70%, rgba(15,39,65,0.8) 0%, transparent 70%);
+  }
+  .avl-ec-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+  }
+  .avl-ec-hero-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-52%);
+    z-index: 1;
+    opacity: 0.14;
+  }
+  .avl-ec-hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 22px 16px;
+    z-index: 2;
+  }
+  .avl-ec-hero-tag {
+    display: block;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 5px;
+  }
+  .avl-ec-hero-heading {
+    font-size: 21px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.18;
+    margin: 0;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  }
+
+  /* Cuerpo dos columnas */
+  .avl-ec-body {
+    background: #fff;
+    padding: 20px 22px 18px;
+    display: flex;
+    gap: 18px;
+    border-bottom: 1px solid #f4f4f4;
+  }
+  .avl-ec-col-l { flex: 0 0 36%; }
+  .avl-ec-col-r { flex: 1; min-width: 0; }
+  .avl-ec-title {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #c0392b;
+    line-height: 1.38;
+    min-height: 5.5em;
+    word-break: break-word;
+  }
+  .avl-ec-title-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.9em;
+    background: #c0392b;
+    vertical-align: text-bottom;
+    margin-left: 1px;
+    animation: avl-blink2 0.8s step-end infinite;
+  }
+  @keyframes avl-blink2 { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .avl-para-line {
+    font-size: 13px;
+    color: #111111;
+    line-height: 1.65;
+    margin: 0 0 8px;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .avl-para-line:last-child { margin-bottom: 0; }
+
+  /* Cursor parpadeante para campos chrome */
+  .avl-cursor {
+    display: inline-block;
+    width: 1.5px;
+    height: 0.85em;
+    background: #888;
+    vertical-align: text-bottom;
+    margin-left: 1px;
+    animation: avl-blink 0.85s step-end infinite;
+  }
+  @keyframes avl-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* Sección CTA */
+  .avl-ec-cta-wrap {
+    background: #fff;
+    padding: 16px 22px 20px;
+    text-align: center;
+  }
+  .avl-ec-cta-q {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+    opacity: 0;
+  }
+  .avl-ec-cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 40px;
+    letter-spacing: 0.03em;
+    pointer-events: none;
+    cursor: default;
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0 4px 18px rgba(192,57,43,0.38), 0 1px 4px rgba(0,0,0,0.12);
+  }
+
+  /* Footer */
+  .avl-ec-footer {
+    background: #151519;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    opacity: 0;
+  }
+  .avl-ec-footer-brand { display: flex; flex-direction: column; gap: 3px; }
+  .avl-ec-footer-name {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.1em;
+  }
+  .avl-ec-footer-tagline {
+    font-size: 9px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+  }
+  .avl-ec-footer-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .avl-ec-footer-icon { color: rgba(255,255,255,0.55); display: block; }
+
+  /* Dark mode */
+  :root[color-scheme="dark"] .avl-ec {
+    background-color: #222;
+    background-image: radial-gradient(circle, #2c2c2c 1px, transparent 1px);
+    box-shadow: 0 6px 36px rgba(0,0,0,0.5);
+  }
+  :root[color-scheme="dark"] .avl-ec-chrome { background: #1e1e1e; }
+  :root[color-scheme="dark"] .avl-ec-field { border-bottom-color: #2a2a2a; }
+  :root[color-scheme="dark"] .avl-ec-fvalue { color: #e0e0e0; }
+  :root[color-scheme="dark"] .avl-ec-sep { background: #2e2e2e; }
+  :root[color-scheme="dark"] .avl-ec-header { background: #1e1e1e; }
+  :root[color-scheme="dark"] .avl-ec-subtitle { color: #555; }
+  :root[color-scheme="dark"] .avl-ec-body { background: #1e1e1e; }
+  :root[color-scheme="dark"] .avl-para-line { color: #d4d4d4; }
+  :root[color-scheme="dark"] .avl-ec-cta-wrap { background: #1e1e1e; border-top-color: #2a2a2a; }
+  :root[color-scheme="dark"] .avl-ec-cta-q { color: #ddd; }
+  :root[color-scheme="dark"] .avl-ec-cta-btn { background: linear-gradient(135deg, #c0392b 0%, #a93226 100%); color: #fff; }
+
+  /* Fallback OS dark */
+  @media (prefers-color-scheme: dark) {
+    :root:not([color-scheme="light"]) .avl-ec { background-color: #222; background-image: radial-gradient(circle, #2c2c2c 1px, transparent 1px); box-shadow: 0 6px 36px rgba(0,0,0,0.5); }
+    :root:not([color-scheme="light"]) .avl-ec-chrome { background: #1e1e1e; }
+    :root:not([color-scheme="light"]) .avl-ec-field { border-bottom-color: #2a2a2a; }
+    :root:not([color-scheme="light"]) .avl-ec-fvalue { color: #e0e0e0; }
+    :root:not([color-scheme="light"]) .avl-ec-sep { background: #2e2e2e; }
+    :root:not([color-scheme="light"]) .avl-ec-header { background: #1e1e1e; }
+    :root:not([color-scheme="light"]) .avl-ec-subtitle { color: #555; }
+    :root:not([color-scheme="light"]) .avl-ec-body { background: #1e1e1e; }
+    :root:not([color-scheme="light"]) .avl-para-line { color: #d4d4d4; }
+    :root:not([color-scheme="light"]) .avl-ec-cta-wrap { background: #1e1e1e; border-top-color: #2a2a2a; }
+    :root:not([color-scheme="light"]) .avl-ec-cta-q { color: #ddd; }
+    :root:not([color-scheme="light"]) .avl-ec-cta-btn { background: linear-gradient(135deg, #c0392b 0%, #a93226 100%); color: #fff; }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .avl-sticky-wrap { height: 300vh; }
+    .avl-sticky-inner { align-items: flex-start; padding: 4vh 0.75rem 0; }
+    .avl-ec-body { flex-direction: column; }
+    .avl-ec-col-l { flex: none; }
+    .avl-ec-title { min-height: auto; }
+  }
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .avl-ec { max-width: 520px; }
+  }
+
+  /* === Métricas de campaña AVL === */
+  /* === Curva de crecimiento campañas AVL === */
+  .avl-stats-block {
+    padding: 0 0 8px;
+    display: flex;
+    justify-content: center;
+  }
+  .avl-chart-wrap {
+    width: 100%;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .avl-chart-wrap.avl-chart-visible { opacity: 1; transform: translateY(0); }
+
+  .avl-chart-kpis {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .avl-chart-kpi-val {
+    font-size: 52px;
+    font-weight: 800;
+    color: #c0392b;
+    line-height: 1;
+    display: block;
+    letter-spacing: -0.04em;
+  }
+  .avl-chart-kpi-label {
+    font-size: 13px;
+    color: #666;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .avl-chart-svg-wrap { width: 100%; }
+  .avl-chart-area {
+    opacity: 0;
+    transition: opacity 1s ease 0.2s;
+  }
+  .avl-chart-area.avl-area-visible { opacity: 1; }
+  .avl-chart-line {
+    fill: none;
+    stroke: #c0392b;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .avl-chart-dot {
+    fill: #c0392b;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .avl-chart-dot.avl-dot-visible {
+    opacity: 1;
+    animation: avl-dot-pulse 2.8s ease-in-out infinite;
+  }
+  @keyframes avl-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+  #avlChartGlow {
+    filter: drop-shadow(0 0 6px #c0392b) drop-shadow(0 0 2px rgba(255,255,255,0.6));
+    pointer-events: none;
+  }
+  .avl-chart-month {
+    font-size: 11px;
+    fill: #c0c0c0;
+    text-anchor: middle;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  }
+
+  /* Dark mode */
+  :root[color-scheme="dark"] .avl-chart-kpi-label { color: #aaa; }
+  :root[color-scheme="dark"] .avl-chart-month     { fill: #3a3a3a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([color-scheme="light"]) .avl-chart-kpi-label { color: #aaa; }
+    :root:not([color-scheme="light"]) .avl-chart-month     { fill: #3a3a3a; }
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    .avl-chart-kpi-val   { font-size: 36px; }
+    .avl-chart-kpi-label { font-size: 11px; }
+    .avl-chart-kpis      { gap: 24px; }
+  }
+
+  </style>
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Content Start -->
+    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+
+      <!-- Titular del proyecto -->
+      <div class="mxd-section mxd-section-inner-headline padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div class="mxd-block__name name-project-link loading__fade">
+                    <span class="btn btn-line-small btn-muted" style="opacity:0.4;cursor:default;">Proyecto privado</span>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div class="mxd-block__content">
+                    <div class="mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">Mailing AVL</h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12"></div>
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="inner-headline__paragraph loading__item">
+                    <p>AVL Abogados es un estudio jurídico que asesora a grandes empresas en múltiples sectores regulados. Diseñé y produje su canal de email marketing para mantener una comunicación constante, profesional y de valor con sus clientes.</p>
+                  </div>
+                  <div class="inner-headline__data">
+                    <div class="mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Cliente</p>
+                              <p class="mxd-data-list__content">AVL Abogados</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Servicio</p>
+                              <p class="mxd-data-list__content">Email Marketing</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Industria</p>
+                              <p class="mxd-data-list__content">Legal</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Formato</p>
+                              <p class="mxd-data-list__content">Campañas recurrentes</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <span class="tag tag-default tag-outline-medium">Email Marketing</span>
+                    <span class="tag tag-default tag-outline-medium">HTML</span>
+                    <span class="tag tag-default tag-outline-medium">Diseño</span>
+                    <span class="tag tag-default tag-outline-medium">Legal</span>
+                    <span class="tag tag-default tag-outline-medium">Automatización</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles del proyecto -->
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Métricas de campaña -->
+          <div class="mxd-project__block avl-stats-block" id="avlStatsBlock">
+            <div class="avl-chart-wrap" id="avlChartWrap">
+
+              <!-- KPIs -->
+              <div class="avl-chart-kpis">
+                <div class="avl-chart-kpi">
+                  <span class="avl-chart-kpi-val">8</span>
+                  <span class="avl-chart-kpi-label">Campañas enviadas</span>
+                </div>
+                <div class="avl-chart-kpi">
+                  <span class="avl-chart-kpi-val">34.3%</span>
+                  <span class="avl-chart-kpi-label">Tasa de apertura</span>
+                </div>
+                <div class="avl-chart-kpi">
+                  <span class="avl-chart-kpi-val">+186</span>
+                  <span class="avl-chart-kpi-label">Nuevos suscriptores</span>
+                </div>
+              </div>
+
+              <!-- Curva SVG -->
+              <div class="avl-chart-svg-wrap">
+                <svg id="avlChartSvg" viewBox="0 0 580 185" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="avlAreaGrad" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%"   stop-color="#c0392b" stop-opacity="0.20"/>
+                      <stop offset="100%" stop-color="#c0392b" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- área de relleno -->
+                  <path class="avl-chart-area" id="avlChartArea"
+                    d="M 24,135 C 36.7,133.8 74.7,130.7 100,128 C 125.3,125.3 150.7,122.2 176,119 C 201.3,115.8 226.7,112.8 252,109 C 277.3,105.2 302.7,101 328,96 C 353.3,91 378.7,84 404,79 C 429.3,74 454.7,70.8 480,66 C 505.3,61.2 543.3,52.7 556,50 L 556,155 L 24,155 Z"
+                    fill="url(#avlAreaGrad)"/>
+                  <!-- línea animada -->
+                  <path class="avl-chart-line" id="avlChartLine"
+                    d="M 24,135 C 36.7,133.8 74.7,130.7 100,128 C 125.3,125.3 150.7,122.2 176,119 C 201.3,115.8 226.7,112.8 252,109 C 277.3,105.2 302.7,101 328,96 C 353.3,91 378.7,84 404,79 C 429.3,74 454.7,70.8 480,66 C 505.3,61.2 543.3,52.7 556,50"/>
+                  <!-- puntos de datos -->
+                  <circle class="avl-chart-dot" cx="24"  cy="135" r="5"/>
+                  <circle class="avl-chart-dot" cx="100" cy="128" r="5"/>
+                  <circle class="avl-chart-dot" cx="176" cy="119" r="5"/>
+                  <circle class="avl-chart-dot" cx="252" cy="109" r="5"/>
+                  <circle class="avl-chart-dot" cx="328" cy="96"  r="5"/>
+                  <circle class="avl-chart-dot" cx="404" cy="79"  r="5"/>
+                  <circle class="avl-chart-dot" cx="480" cy="66"  r="5"/>
+                  <circle class="avl-chart-dot" cx="556" cy="50"  r="5"/>
+                  <!-- punto viajero con glow -->
+                  <circle id="avlChartGlow" cx="-20" cy="-20" r="6" fill="#c0392b" opacity="0"/>
+                  <!-- etiquetas de mes -->
+                  <text class="avl-chart-month" x="24"  y="173">Ene</text>
+                  <text class="avl-chart-month" x="100" y="173">Feb</text>
+                  <text class="avl-chart-month" x="176" y="173">Mar</text>
+                  <text class="avl-chart-month" x="252" y="173">Abr</text>
+                  <text class="avl-chart-month" x="328" y="173">May</text>
+                  <text class="avl-chart-month" x="404" y="173">Jun</text>
+                  <text class="avl-chart-month" x="480" y="173">Jul</text>
+                  <text class="avl-chart-month" x="556" y="173">Ago</text>
+                </svg>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Reto -->
+          <div class="mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Reto</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up">Traducir la autoridad jurídica del estudio en comunicaciones de correo que sus clientes corporativos realmente leyeran.</p>
+                      <p class="anim-uni-in-up">AVL necesitaba mantener a sus clientes al día sobre cambios normativos, novedades del sector y servicios del estudio, pero su comunicación por email era irregular, sin diseño consistente y sin métricas. El reto era construir un canal que estuviera a la altura de su especialización y que generara engagement real, no solo aperturas.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Animación newsletter AVL -->
+      <div class="mxd-section" id="avl-email-section" style="padding:0;">
+        <div class="avl-sticky-wrap">
+          <div class="avl-sticky-inner">
+            <div class="avl-ec" id="avlEc">
+
+              <!-- Chrome: campos De / Para / Asunto -->
+              <div class="avl-ec-chrome">
+                <div class="avl-ec-field" id="avlFieldDe">
+                  <span class="avl-ec-flabel">De</span>
+                  <span class="avl-ec-fvalue" id="avlValDe"></span>
+                </div>
+                <div class="avl-ec-field" id="avlFieldPara">
+                  <span class="avl-ec-flabel">Para</span>
+                  <span class="avl-ec-fvalue" id="avlValPara"></span>
+                </div>
+                <div class="avl-ec-field" id="avlFieldAsunto">
+                  <span class="avl-ec-flabel">Asunto</span>
+                  <span class="avl-ec-fvalue" id="avlValAsunto"></span>
+                </div>
+              </div>
+              <div class="avl-ec-sep" id="avlEcSep"></div>
+
+              <!-- Header con logo AVL -->
+              <div class="avl-ec-header" id="avlEcHeader">
+                <div class="avl-ec-logo-row">
+                  <span class="avl-ec-logo">AVL</span>
+                  <span class="avl-ec-subtitle">LAW · TAX · TECH</span>
+                </div>
+              </div>
+
+              <!-- Banda ALERTA LEGAL -->
+              <div class="avl-ec-alert" id="avlEcAlert">
+                <span class="avl-ec-alert-dot"></span>
+                <span class="avl-ec-alert-text">Alerta Legal</span>
+              </div>
+
+              <!-- Hero con iconos SVG + texto overlay -->
+              <div class="avl-ec-hero" id="avlEcHero">
+                <svg class="avl-ec-hero-svg" width="260" height="100" viewBox="0 0 260 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="6" y="5" width="52" height="70" rx="5" stroke="#fff" stroke-width="1.4"/>
+                  <line x1="16" y1="22" x2="48" y2="22" stroke="#fff" stroke-width="1.1"/>
+                  <line x1="16" y1="30" x2="48" y2="30" stroke="#fff" stroke-width="1.1"/>
+                  <line x1="16" y1="38" x2="42" y2="38" stroke="#fff" stroke-width="1.1"/>
+                  <line x1="16" y1="46" x2="36" y2="46" stroke="#fff" stroke-width="1.1"/>
+                  <rect x="26" y="14" width="28" height="18" rx="2.5" fill="#c0392b" opacity="0.8"/>
+                  <text x="29" y="27" fill="#fff" font-size="8" font-family="sans-serif" font-weight="800">LEX</text>
+                  <circle cx="130" cy="50" r="34" stroke="#fff" stroke-width="1.4" opacity="0.45"/>
+                  <circle cx="130" cy="50" r="22" stroke="#fff" stroke-width="1" opacity="0.2"/>
+                  <path d="M119 50 L130 37 L141 50 L137 50 L137 63 L123 63 L123 50 Z" fill="#fff" opacity="0.1"/>
+                  <path d="M125 63 L125 56 L135 56 L135 63" stroke="#fff" stroke-width="1.2" fill="none"/>
+                  <rect x="178" y="10" width="72" height="50" rx="6" stroke="#fff" stroke-width="1.4" opacity="0.65"/>
+                  <polyline points="178,28 198,42 210,34 250,58" stroke="#c0392b" stroke-width="1.8" fill="none" opacity="0.85"/>
+                  <circle cx="198" cy="42" r="3" fill="#c0392b" opacity="0.85"/>
+                  <circle cx="210" cy="34" r="3" fill="#c0392b" opacity="0.85"/>
+                  <rect x="182" y="70" width="64" height="1" fill="#fff" opacity="0.2"/>
+                  <rect x="182" y="78" width="40" height="1" fill="#fff" opacity="0.15"/>
+                </svg>
+                <div class="avl-ec-hero-overlay">
+                  <span class="avl-ec-hero-tag">Normativa Digital · Mayo 2025</span>
+                  <h2 class="avl-ec-hero-heading">Protección de Datos<br>en Ecuador</h2>
+                </div>
+              </div>
+
+              <!-- Cuerpo: dos columnas -->
+              <div class="avl-ec-body">
+                <div class="avl-ec-col-l">
+                  <div class="avl-ec-title" id="avlEcTitle"></div>
+                </div>
+                <div class="avl-ec-col-r">
+                  <p class="avl-para-line" id="avlPara1">La nueva normativa de protección de datos entra en vigor el 26 de mayo.</p>
+                  <p class="avl-para-line" id="avlPara2">Las empresas del sector deberán actualizar sus políticas de privacidad y contratos.</p>
+                  <p class="avl-para-line" id="avlPara3">AVL Abogados ha preparado una guía de cumplimiento para cada sector regulado.</p>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="avl-ec-cta-wrap" id="avlEcCtaWrap">
+                <p class="avl-ec-cta-q" id="avlEcCtaQ">¿Te aplica la norma?</p>
+                <span class="avl-ec-cta-btn" id="avlEcCtaBtn">⚠️ Descúbrelo antes del 26 de mayo</span>
+              </div>
+
+              <!-- Footer: marca + redes -->
+              <div class="avl-ec-footer" id="avlEcFooter">
+                <div class="avl-ec-footer-brand">
+                  <span class="avl-ec-footer-name">AVL Abogados</span>
+                  <span class="avl-ec-footer-tagline">Quito, Ecuador · avlabogados.ec</span>
+                </div>
+                <div class="avl-ec-footer-social">
+                  <svg class="avl-ec-footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LinkedIn">
+                    <rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.8"/>
+                    <line x1="7" y1="10" x2="7" y2="17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="7" cy="7.5" r="1.1" fill="currentColor"/>
+                    <path d="M11 17V13c0-1.7 1.3-3 3-3s3 1.3 3 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <line x1="11" y1="10" x2="11" y2="17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                  <svg class="avl-ec-footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="X">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  <svg class="avl-ec-footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Web">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M3 12h18" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M12 3c-2.5 3-3.5 5.5-3.5 9s1 6 3.5 9M12 3c2.5 3 3.5 5.5 3.5 9s-1 6-3.5 9" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Solución -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solución</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up">Construí múltiples templates HTML a medida: cada vez que el equipo de diseño de AVL entregaba una nueva pieza, yo la maquetaba en HTML puro para que la campaña saliera sin demoras. Las campañas se producían bajo demanda — en el momento en que el cliente lo solicitaba — con tiempos de entrega ajustados. El uso de tablas como estructura base garantizó compatibilidad con todos los clientes de correo, incluidas las versiones más antiguas de Outlook.</p>
+                      <p class="anim-uni-in-up">La gestión y el seguimiento se realizaron con AcyMailing, generando informes mensuales de apertura, clics, altas y bajas de suscriptores. Donde fue posible, incorporé IA para acelerar la producción: borradores de contenido, propuestas de asunto y revisión de tono, reduciendo el tiempo de cada campaña de forma considerable.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegación entre proyectos -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project__nav">
+              <div class="mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 mxd-project__navitem left mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="project-details-adopta-club.html">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Anterior</span>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-adopta-club.html">
+                      <span>Proyecto anterior</span>
+                    </a>
+                  </div>
+                  <div class="col-6 mxd-project__navitem right mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="project-details-lupamedia.html">
+                      <span class="btn-caption">Siguiente</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-lupamedia.html">
+                      <span>Próximo proyecto</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Page Content End -->
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script>
+    (function () {
+      var section      = document.getElementById('avl-email-section');
+      if (!section) return;
+
+      var ec           = document.getElementById('avlEc');
+      var fieldDe      = document.getElementById('avlFieldDe');
+      var fieldPara    = document.getElementById('avlFieldPara');
+      var fieldAsunto  = document.getElementById('avlFieldAsunto');
+      var valDe        = document.getElementById('avlValDe');
+      var valPara      = document.getElementById('avlValPara');
+      var valAsunto    = document.getElementById('avlValAsunto');
+      var sep          = document.getElementById('avlEcSep');
+      var ecHeader     = document.getElementById('avlEcHeader');
+      var alertEl      = document.getElementById('avlEcAlert');
+      var heroEl       = document.getElementById('avlEcHero');
+      var ecTitle      = document.getElementById('avlEcTitle');
+      var paras        = [
+        document.getElementById('avlPara1'),
+        document.getElementById('avlPara2'),
+        document.getElementById('avlPara3')
+      ];
+      var ctaQ         = document.getElementById('avlEcCtaQ');
+      var ctaBtn       = document.getElementById('avlEcCtaBtn');
+      var footerEl     = document.getElementById('avlEcFooter');
+
+      var texts = {
+        de:     'AVL Abogados <noticias@avlabogados.ec>',
+        para:   'Clientes AVL <lista@avlabogados.ec>',
+        asunto: 'AVL Informa'
+      };
+      var titleText = 'Ley de Protección de Datos Personales';
+
+      /* Cursor neutro para campos chrome; cursor rojo para título */
+      var chromeCursor = document.createElement('span');
+      chromeCursor.className = 'avl-cursor';
+      chromeCursor.setAttribute('aria-hidden', 'true');
+
+      var titleCursor = document.createElement('span');
+      titleCursor.className = 'avl-ec-title-cursor';
+      titleCursor.setAttribute('aria-hidden', 'true');
+
+      function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+      function mapR(v, a, b, c, d) {
+        return c + (d - c) * clamp((v - a) / (b - a), 0, 1);
+      }
+
+      function getProgress() {
+        var rect = section.getBoundingClientRect();
+        var scrollable = section.offsetHeight - window.innerHeight;
+        if (scrollable <= 0) return 0;
+        return clamp(-rect.top / scrollable, 0, 1);
+      }
+
+      /* Typewriter bidireccional: muestra chars[0..n] según p */
+      function applyTyped(el, text, cur, p, pA, pB) {
+        var chars = Math.floor(mapR(p, pA, pB, 0, text.length));
+        el.textContent = text.substring(0, chars);
+        if (chars > 0 && chars < text.length) el.appendChild(cur);
+      }
+
+      function render(p) {
+        /* Retirar cursores antes de reubicarlos */
+        if (chromeCursor.parentNode) chromeCursor.parentNode.removeChild(chromeCursor);
+        if (titleCursor.parentNode)  titleCursor.parentNode.removeChild(titleCursor);
+
+        /* Contenedor: fade + scale */
+        var cA = mapR(p, 0, 0.05, 0, 1);
+        ec.style.opacity   = cA;
+        ec.style.transform = 'scale(' + (0.97 + 0.03 * cA) + ')';
+
+        /* Campo De */
+        fieldDe.style.opacity   = mapR(p, 0.03, 0.09, 0, 1);
+        fieldDe.style.transform = 'translateY(' + mapR(p, 0.03, 0.09, 5, 0) + 'px)';
+        applyTyped(valDe, texts.de, chromeCursor, p, 0.09, 0.18);
+
+        /* Campo Para */
+        fieldPara.style.opacity   = mapR(p, 0.16, 0.22, 0, 1);
+        fieldPara.style.transform = 'translateY(' + mapR(p, 0.16, 0.22, 5, 0) + 'px)';
+        applyTyped(valPara, texts.para, chromeCursor, p, 0.22, 0.29);
+
+        /* Campo Asunto */
+        fieldAsunto.style.opacity   = mapR(p, 0.27, 0.33, 0, 1);
+        fieldAsunto.style.transform = 'translateY(' + mapR(p, 0.27, 0.33, 5, 0) + 'px)';
+        applyTyped(valAsunto, texts.asunto, chromeCursor, p, 0.33, 0.39);
+
+        /* Línea separadora */
+        sep.style.width = mapR(p, 0.39, 0.42, 0, 100) + '%';
+
+        /* Header newsletter: slide-down */
+        ecHeader.style.opacity   = mapR(p, 0.41, 0.47, 0, 1);
+        ecHeader.style.transform = 'translateY(' + mapR(p, 0.41, 0.47, -14, 0) + 'px)';
+
+        /* Banda alerta: scaleX */
+        alertEl.style.transform = 'scaleX(' + mapR(p, 0.47, 0.54, 0, 1) + ')';
+
+        /* Hero: clip-path reveal */
+        heroEl.style.clipPath = 'inset(0 0 ' + mapR(p, 0.53, 0.62, 100, 0) + '% 0)';
+
+        /* Título typewriter */
+        applyTyped(ecTitle, titleText, titleCursor, p, 0.61, 0.71);
+
+        /* Párrafos: stagger */
+        paras[0].style.opacity   = mapR(p, 0.69, 0.75, 0, 1);
+        paras[0].style.transform = 'translateY(' + mapR(p, 0.69, 0.75, 8, 0) + 'px)';
+        paras[1].style.opacity   = mapR(p, 0.72, 0.78, 0, 1);
+        paras[1].style.transform = 'translateY(' + mapR(p, 0.72, 0.78, 8, 0) + 'px)';
+        paras[2].style.opacity   = mapR(p, 0.75, 0.81, 0, 1);
+        paras[2].style.transform = 'translateY(' + mapR(p, 0.75, 0.81, 8, 0) + 'px)';
+
+        /* CTA pregunta */
+        ctaQ.style.opacity   = mapR(p, 0.80, 0.85, 0, 1);
+        ctaQ.style.transform = 'translateY(' + mapR(p, 0.80, 0.85, 6, 0) + 'px)';
+
+        /* CTA botón: scale */
+        var btnP = mapR(p, 0.83, 0.89, 0, 1);
+        ctaBtn.style.opacity   = btnP;
+        ctaBtn.style.transform = 'scale(' + btnP + ')';
+
+        /* Footer */
+        footerEl.style.opacity = mapR(p, 0.88, 0.94, 0, 1);
+      }
+
+      window.addEventListener('scroll', function () { render(getProgress()); }, { passive: true });
+      render(getProgress());
+    })();
+
+    /* === Curva de crecimiento campañas AVL === */
+    (function () {
+      var block = document.getElementById('avlStatsBlock');
+      if (!block) return;
+
+      var wrap = document.getElementById('avlChartWrap');
+      var line = document.getElementById('avlChartLine');
+      var area = document.getElementById('avlChartArea');
+      var glow = document.getElementById('avlChartGlow');
+      var dots = Array.prototype.slice.call(block.querySelectorAll('.avl-chart-dot'));
+
+      var totalLength = line.getTotalLength();
+      line.style.strokeDasharray  = totalLength;
+      line.style.strokeDashoffset = totalLength;
+
+      function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+      function startLoop() {
+        /* Punto viajero recorre la curva en bucle infinito */
+        var LOOP_DUR  = 2800;
+        var loopStart = null;
+        glow.setAttribute('opacity', '0.9');
+
+        requestAnimationFrame(function loop(ts) {
+          if (!loopStart) loopStart = ts;
+          var t  = ((ts - loopStart) % LOOP_DUR) / LOOP_DUR;
+          var pt = line.getPointAtLength(t * totalLength);
+          glow.setAttribute('cx', pt.x.toFixed(1));
+          glow.setAttribute('cy', pt.y.toFixed(1));
+          requestAnimationFrame(loop);
+        });
+      }
+
+      function animate() {
+        wrap.classList.add('avl-chart-visible');
+        var DURATION  = 1500;
+        var startTime = null;
+
+        requestAnimationFrame(function tick(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / DURATION, 1);
+          var eased    = easeInOut(progress);
+
+          /* Dibujar línea de izquierda a derecha */
+          line.style.strokeDashoffset = totalLength * (1 - eased);
+
+          /* Glow sigue el extremo de la línea durante el dibujado */
+          var pt = line.getPointAtLength(eased * totalLength);
+          glow.setAttribute('opacity', String(eased));
+          glow.setAttribute('cx', pt.x.toFixed(1));
+          glow.setAttribute('cy', pt.y.toFixed(1));
+
+          /* Revelar puntos a medida que la línea los alcanza */
+          dots.forEach(function (dot, i) {
+            if (eased >= i / (dots.length - 1)) dot.classList.add('avl-dot-visible');
+          });
+
+          /* Mostrar área de relleno desde el 20% */
+          if (progress >= 0.2) area.classList.add('avl-area-visible');
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            startLoop(); /* Arrancar bucle infinito al terminar el dibujado */
+          }
+        });
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
+        setTimeout(animate, 150);
+      }, { threshold: 0.3 });
+
+      observer.observe(block);
+    })();
+    </script>
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+
+</html>

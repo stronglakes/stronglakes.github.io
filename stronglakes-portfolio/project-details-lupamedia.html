@@ -1,0 +1,892 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Lupa Media — Proyecto | Luis Fernando Fuertes</title>
+    <meta name="description" content="Desarrollo web para Lupa Media, organización ecuatoriana de periodismo de verificación e investigación que combate la desinformación.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, Lupa Media, lupa.com.ec, WordPress, periodismo, fact-checking, Ecuador">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="Lupa Media — Proyecto | Luis Fernando Fuertes">
+    <meta property="og:description" content="Desarrollo web para Lupa Media, organización ecuatoriana de periodismo de verificación e investigación.">
+    <meta property="og:url" content="https://stronglakes.github.io/project-details-lupamedia.html">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+      .lupa-live-card {
+        padding: 0;
+        position: relative;
+      }
+      .lupa-live-img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-image: url('img/works/lupamedia/lupamedia-home.jpg');
+        z-index: 0;
+      }
+      .lupa-live-gradient {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 55%;
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+        z-index: 1;
+      }
+      .lupa-live-text {
+        position: absolute;
+        bottom: 40px;
+        left: 48px;
+        z-index: 2;
+        max-width: 520px;
+      }
+      .lupa-live-label {
+        margin: 0 0 8px;
+        color: #aaaaaa;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .lupa-live-title {
+        margin: 0;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      @media (max-width: 600px) {
+        .lupa-live-text { bottom: 24px; left: 24px; right: 24px; max-width: 100%; }
+        .lupa-live-title { font-size: 16px; }
+      }
+
+      /* YouTube card — desktop/mobile */
+      .lupa-yt-desktop { display: block; position: absolute; inset: 0; }
+      .lupa-yt-desktop iframe { width: 100%; height: 100%; display: block; }
+      .lupa-yt-mobile  { display: none; }
+
+      @media (max-width: 991px) {
+        .lupa-yt-desktop { display: none; }
+        .lupa-yt-mobile {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          cursor: pointer;
+        }
+        .lupa-yt-mobile::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.3);
+          border-radius: inherit;
+        }
+      }
+      .lupa-yt-play {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 2;
+        width: 64px; height: 45px;
+        padding: 0;
+        transition: transform 0.2s;
+      }
+      .lupa-yt-play:hover { transform: translate(-50%, -50%) scale(1.1); }
+
+      /* Modal */
+      .lupa-yt-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+      }
+      .lupa-yt-modal.is-open { display: flex; }
+      .lupa-yt-modal__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.88);
+      }
+      .lupa-yt-modal__box {
+        position: relative;
+        width: 92vw;
+        max-width: 760px;
+        z-index: 1;
+      }
+      .lupa-yt-modal__close {
+        position: absolute;
+        top: -44px; right: 0;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        width: 32px; height: 32px;
+        padding: 0;
+        opacity: 0.8;
+      }
+      .lupa-yt-modal__close:hover { opacity: 1; }
+      .lupa-yt-modal__close svg { width: 100%; height: 100%; }
+      .lupa-yt-modal__video {
+        position: relative;
+        padding-top: 56.25%;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .lupa-yt-modal__video iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+      }
+
+      /* ── Thermometer scroll section ── */
+      .lupa-ht-section {
+        position: relative;
+        height: 350vh;
+      }
+      .lupa-ht-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background: var(--base);
+        --ht-text:    #333333;
+        --ht-muted:   #555555;
+        --ht-label:   #999999;
+        --ht-track:   rgba(0,0,0,0.07);
+        --ht-divider: rgba(0,0,0,0.08);
+        --ht-thumb:   var(--base);
+      }
+      [color-scheme=dark] .lupa-ht-sticky {
+        --ht-text:    #cccccc;
+        --ht-muted:   #aaaaaa;
+        --ht-label:   #666666;
+        --ht-track:   rgba(255,255,255,0.08);
+        --ht-divider: rgba(255,255,255,0.08);
+      }
+      .lupa-ht-wrap { width: 100%; }
+      .lupa-ht-section-label {
+        margin: 0 0 40px;
+        color: var(--ht-label);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+      .lupa-ht {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .lupa-ht__tube-row {
+        display: flex;
+        align-items: center;
+      }
+      .lupa-ht__bulb {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: #4CAF50;
+        box-shadow: 0 0 0 8px rgba(76,175,80,0.22);
+        transition: background 0.12s linear, box-shadow 0.12s linear;
+        position: relative;
+        z-index: 2;
+      }
+      .lupa-ht__track-outer {
+        flex: 1;
+        overflow: visible;
+        margin-left: -16px;
+        position: relative;
+      }
+      .lupa-ht__track {
+        width: 100%;
+        height: 28px;
+        background: var(--ht-track);
+        border-radius: 0 14px 14px 0;
+        position: relative;
+        overflow: visible;
+      }
+      .lupa-ht__fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(to right, #4CAF50 20%, #FFB300 47%, #FF7043 74%, #E53935 100%);
+        border-radius: 0 14px 14px 0;
+        position: relative;
+        overflow: visible;
+      }
+      .lupa-ht__thumb {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) translateX(50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--ht-thumb);
+        border: 4px solid #4CAF50;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+        transition: border-color 0.12s linear;
+        z-index: 3;
+      }
+      .lupa-ht__label-item {
+        position: absolute;
+        top: calc(100% + 10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(-50%);
+      }
+      .lupa-ht__tick-bar {
+        width: 2px;
+        height: 10px;
+        background: rgba(0,0,0,0.18);
+        border-radius: 1px;
+        margin-bottom: 6px;
+        transition: background 0.25s ease;
+      }
+      .lupa-ht__tick-text {
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--ht-muted);
+        white-space: nowrap;
+        transition: color 0.25s ease;
+      }
+      .lupa-ht__label-item.is-active .lupa-ht__tick-bar { background: var(--ht-color, #4CAF50); }
+      .lupa-ht__label-item.is-active .lupa-ht__tick-text { color: var(--ht-color, #4CAF50); }
+      .lupa-ht__verdict {
+        margin-top: 64px;
+        padding-top: 24px;
+        border-top: 1px solid var(--ht-divider);
+      }
+      .lupa-ht__verdict-name {
+        margin: 0 0 10px;
+        font-size: 2.6rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: #4CAF50;
+        transition: color 0.25s ease;
+      }
+      .lupa-ht__verdict-desc {
+        margin: 0;
+        font-size: 1.9rem;
+        line-height: 1.55;
+        color: var(--ht-text);
+        transition: opacity 0.2s ease;
+      }
+      @media (max-width: 640px) {
+        .lupa-ht-section        { height: 300vh; }
+        .lupa-ht__bulb          { width: 42px; height: 42px; }
+        .lupa-ht__track         { height: 16px; border-radius: 0 8px 8px 0; }
+        .lupa-ht__fill          { border-radius: 0 8px 8px 0; }
+        .lupa-ht__thumb         { width: 28px; height: 28px; border-width: 3px; }
+        .lupa-ht__tick-text     { display: none; }
+        .lupa-ht-section-label  { font-size: 1.0rem; margin-bottom: 24px; }
+        .lupa-ht__verdict-name  { font-size: 1.8rem; }
+        .lupa-ht__verdict-desc  { font-size: 1.5rem; }
+        .lupa-ht__verdict       { margin-top: 44px; }
+      }
+
+      /* Float animation */
+      @keyframes lupa-float {
+        0%, 100% { transform: translateY(0px); }
+        50%       { transform: translateY(-12px); }
+      }
+      .lupa-float {
+        animation: lupa-float 5s ease-in-out infinite;
+        display: block;
+      }
+
+      /* YouTube card — 16:9 desde que aparece el iframe */
+      @media (min-width: 992px) {
+        .lupa-yt-card {
+          height: auto;
+          aspect-ratio: 16 / 9;
+        }
+      }
+
+      /* WhatsApp card — móvil/tablet: imagen llena el card */
+      @media (max-width: 1199px) {
+        #whatsapp-card {
+          padding: 0 !important;
+        }
+        #whatsapp-card .lupa-float {
+          height: 100% !important;
+          object-position: bottom center;
+        }
+      }
+    </style>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Content Start -->
+    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+
+      <!-- Titular del proyecto -->
+      <div class="mxd-section mxd-section-inner-headline padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div class="mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="https://lupa.com.ec/" target="_blank" rel="noopener">
+                      <span class="btn-caption">Ver proyecto</span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div class="mxd-block__content">
+                    <div class="mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">Lupa Media</h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12"></div>
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="inner-headline__paragraph loading__item">
+                    <p>Lupa Media es una organización ecuatoriana de periodismo de verificación e investigación. Combate la desinformación con evidencia, educación y análisis riguroso. Su sitio es la plataforma central desde la que llega a miles de ciudadanos cada semana.</p>
+                  </div>
+                  <div class="inner-headline__data">
+                    <div class="mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Cliente</p>
+                              <p class="mxd-data-list__content">Lupa Media</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Servicio</p>
+                              <p class="mxd-data-list__content">Desarrollo Web</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Industria</p>
+                              <p class="mxd-data-list__content">Medios / Periodismo</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">País</p>
+                              <p class="mxd-data-list__content">Ecuador</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <span class="tag tag-default tag-outline-medium">WordPress</span>
+                    <span class="tag tag-default tag-outline-medium">UX/UI</span>
+                    <span class="tag tag-default tag-outline-medium">Medios</span>
+                    <span class="tag tag-default tag-outline-medium">Periodismo</span>
+                    <span class="tag tag-default tag-outline-medium">Ecuador</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen principal — Última publicación -->
+      <div class="mxd-section">
+        <div class="mxd-container">
+          <div class="mxd-divider loading__fade">
+            <div id="lupa-live-img" class="mxd-divider__image parallax-img lupa-live-img" style="background-image: url('img/works/lupamedia/lupamedia-home.jpg');"></div>
+            <div class="lupa-live-gradient"></div>
+            <div class="lupa-live-text">
+              <p class="lupa-live-label">Última publicación</p>
+              <p class="lupa-live-title" id="lupa-live-title"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles del proyecto -->
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Reto -->
+          <div class="mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Reto</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up">Construir una plataforma editorial que soporte verificaciones, investigaciones y programas educativos sin que la tecnología se interponga en la misión.</p>
+                      <p class="anim-uni-in-up">Lupa Media nació del GNI Startups Lab Hispanoamérica — el programa de incubación de medios de SembraMedia y Google News Initiative — con una misión clara: combatir la desinformación en Ecuador mediante verificación basada en evidencia. Para cumplirla necesitaban un sitio web que organizara con claridad sus tres líneas de trabajo — fact-checking, investigación y educación —, que se integrara con sus canales de distribución en redes sociales y que permitiera al equipo editorial publicar de forma autónoma sin depender de soporte técnico constante.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imágenes -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project-cards">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner lupa-live-card radius-m">
+                      <div id="discurso-live-img" class="lupa-live-img"></div>
+                      <div class="lupa-live-gradient"></div>
+                      <div class="lupa-live-text">
+                        <p class="lupa-live-label">Última verificación</p>
+                        <p class="lupa-live-title" id="discurso-live-title"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div id="whatsapp-card" class="mxd-project-cards__inner radius-m" style="background:#0183c7;overflow:hidden;display:flex;align-items:flex-end;padding:20px 0 0;">
+                      <img class="lupa-float" src="img/works/lupamedia/verificaciones-por-whatsapp.png" alt="Lupa Media — Verificaciones por WhatsApp" style="display:block;width:100%;height:auto;object-fit:contain;object-position:bottom;transform-origin:bottom center;">
+                    </div>
+                  </div>
+                  <div class="col-12 mxd-project-cards__item lupa-yt-card mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner bg-base-tint radius-m" style="padding:0;overflow:hidden;position:relative;">
+                      <!-- Desktop: iframe embebido -->
+                      <div class="lupa-yt-desktop">
+                        <iframe
+                          src="https://www.youtube.com/embed/mXjGAjyJuQ0?start=31"
+                          title="Lupa Media — Discurso Público"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen>
+                        </iframe>
+                      </div>
+                      <!-- Móvil: thumbnail con botón de play -->
+                      <div
+                        class="lupa-yt-mobile"
+                        id="lupa-yt-thumb"
+                        style="background-image:url('https://img.youtube.com/vi/mXjGAjyJuQ0/maxresdefault.jpg');"
+                        role="button"
+                        aria-label="Reproducir video">
+                        <button class="lupa-yt-play" tabindex="-1" aria-hidden="true">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.5 7.6C65.6 4.3 63 1.7 59.7.8 54.5-.1 34-.1 34-.1S13.5-.1 8.3.8C5 1.7 2.4 4.3 1.5 7.6.6 12.8.6 24 .6 24s0 11.2.9 16.4c.9 3.3 3.5 5.9 6.8 6.8C13.5 48.1 34 48.1 34 48.1s20.5 0 25.7-.9c3.3-.9 5.9-3.5 6.8-6.8.9-5.2.9-16.4.9-16.4s0-11.2-.9-16.4z" fill="#ff0000"/><path d="M27.1 34.3l17.1-10.3-17.1-10.3v20.6z" fill="#fff"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Escala de verificación — scroll section ── -->
+      <div class="lupa-ht-section" id="lupa-ht-section">
+        <div class="lupa-ht-sticky" id="lupa-ht-sticky">
+          <div class="mxd-container grid-container">
+            <div class="lupa-ht-wrap">
+              <p class="lupa-ht-section-label">Escala de verificación</p>
+              <div class="lupa-ht" id="lupa-ht">
+                <div class="lupa-ht__tube-row">
+                  <div class="lupa-ht__bulb" id="lupa-ht-bulb"></div>
+                  <div class="lupa-ht__track-outer">
+                    <div class="lupa-ht__track" id="lupa-ht-track">
+                      <div class="lupa-ht__fill" id="lupa-ht-fill">
+                        <div class="lupa-ht__thumb" id="lupa-ht-thumb"></div>
+                      </div>
+                    </div>
+                    <div class="lupa-ht__label-item is-active" data-idx="0" style="left:20%">
+                      <div class="lupa-ht__tick-bar"></div>
+                      <span class="lupa-ht__tick-text">Verdadero</span>
+                    </div>
+                    <div class="lupa-ht__label-item" data-idx="1" style="left:47%">
+                      <div class="lupa-ht__tick-bar"></div>
+                      <span class="lupa-ht__tick-text">Falta contexto</span>
+                    </div>
+                    <div class="lupa-ht__label-item" data-idx="2" style="left:74%">
+                      <div class="lupa-ht__tick-bar"></div>
+                      <span class="lupa-ht__tick-text">Engañoso</span>
+                    </div>
+                    <div class="lupa-ht__label-item" data-idx="3" style="left:100%;transform:translateX(-100%)">
+                      <div class="lupa-ht__tick-bar"></div>
+                      <span class="lupa-ht__tick-text">Falso</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="lupa-ht__verdict">
+                  <p class="lupa-ht__verdict-name" id="lupa-ht-name">Verdadero</p>
+                  <p class="lupa-ht__verdict-desc" id="lupa-ht-desc">La afirmación coincide con los hechos, datos y la evidencia disponible.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Solución -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solución</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up">Desarrollé lupa.com.ec en WordPress con una arquitectura de contenidos pensada para las tres líneas editoriales de la organización: verificaciones del discurso público, contenido explicativo e investigaciones de fondo. Cada tipo de contenido tiene su propia plantilla y estructura de metadatos que permite a los editores clasificar y publicar de forma consistente sin intervención técnica.</p>
+                      <p class="anim-uni-in-up">La integración con los canales de distribución de Lupa — Instagram, Facebook, X, YouTube, WhatsApp y TikTok — fue diseñada para que cada pieza publicada en el sitio sea nativa en el canal donde se comparte, sin perder coherencia de marca. Se implementó también un sistema de newsletter y un canal de WhatsApp para solicitudes directas de verificación por parte de lectores, convirtiendo al sitio en el centro de operaciones digital de la organización.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegación entre proyectos -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project__nav">
+              <div class="mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 mxd-project__navitem left mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="project-details-avl.html">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Anterior</span>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-avl.html">
+                      <span>Proyecto anterior</span>
+                    </a>
+                  </div>
+                  <div class="col-6 mxd-project__navitem right mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="works-masonry.html">
+                      <span class="btn-caption">Ver todos</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="works-masonry.html">
+                      <span>Ver todos los proyectos</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Page Content End -->
+
+    <!-- YouTube Modal -->
+    <div id="lupa-yt-modal" class="lupa-yt-modal" role="dialog" aria-modal="true" aria-label="Video Lupa Media">
+      <div class="lupa-yt-modal__overlay" id="lupa-yt-overlay"></div>
+      <div class="lupa-yt-modal__box">
+        <button class="lupa-yt-modal__close" id="lupa-yt-close" aria-label="Cerrar video">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="lupa-yt-modal__video">
+          <iframe id="lupa-yt-modal-iframe" src="" title="Lupa Media — Discurso Público" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    (function () {
+      var img   = document.getElementById('lupa-live-img');
+      var title = document.getElementById('lupa-live-title');
+      if (!img) return;
+      fetch('https://lupa.com.ec/wp-json/wp/v2/posts?per_page=1&_embed=true')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var post  = data && data[0];
+          var media = post
+            && post._embedded
+            && post._embedded['wp:featuredmedia']
+            && post._embedded['wp:featuredmedia'][0];
+          if (media && media.source_url) {
+            img.style.backgroundImage = "url('" + media.source_url + "')";
+          }
+          if (title && post && post.title && post.title.rendered) {
+            title.textContent = post.title.rendered;
+          }
+        })
+        .catch(function () { /* fallback: mantiene lupamedia-home.jpg */ });
+    }());
+
+    (function () {
+      var img   = document.getElementById('discurso-live-img');
+      var title = document.getElementById('discurso-live-title');
+      if (!img) return;
+      fetch('https://lupa.com.ec/wp-json/wp/v2/categories?slug=discurso-publico')
+        .then(function (res) { return res.json(); })
+        .then(function (cats) {
+          var catId = cats && cats[0] && cats[0].id;
+          if (!catId) return Promise.reject('no-category');
+          return fetch('https://lupa.com.ec/wp-json/wp/v2/posts?per_page=1&_embed=true&categories=' + catId);
+        })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var post  = data && data[0];
+          var media = post
+            && post._embedded
+            && post._embedded['wp:featuredmedia']
+            && post._embedded['wp:featuredmedia'][0];
+          if (media && media.source_url) {
+            img.style.backgroundImage = "url('" + media.source_url + "')";
+          }
+          if (title && post && post.title && post.title.rendered) {
+            title.textContent = post.title.rendered;
+          }
+        })
+        .catch(function () { /* fallback: mantiene imagen por defecto */ });
+    }());
+
+    (function () {
+      var thumb   = document.getElementById('lupa-yt-thumb');
+      var modal   = document.getElementById('lupa-yt-modal');
+      var overlay = document.getElementById('lupa-yt-overlay');
+      var closeBtn = document.getElementById('lupa-yt-close');
+      var iframe  = document.getElementById('lupa-yt-modal-iframe');
+      if (!thumb || !modal) return;
+
+      function openModal() {
+        iframe.src = 'https://www.youtube.com/embed/mXjGAjyJuQ0?start=31&autoplay=1';
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        iframe.src = '';
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      thumb.addEventListener('click', openModal);
+
+      overlay.addEventListener('click', closeModal);
+      closeBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    }());
+
+    (function () {
+      var section = document.getElementById('lupa-ht-section');
+      if (!section) return;
+      var fill   = document.getElementById('lupa-ht-fill');
+      var thumb  = document.getElementById('lupa-ht-thumb');
+      var bulb   = document.getElementById('lupa-ht-bulb');
+      var nameEl = document.getElementById('lupa-ht-name');
+      var descEl = document.getElementById('lupa-ht-desc');
+      var track  = document.getElementById('lupa-ht-track');
+      var ticks  = section.querySelectorAll('.lupa-ht__label-item');
+
+      var states = [
+        { color: '#4CAF50', ring: 'rgba(76,175,80,0.22)',  label: 'Verdadero',
+          text: 'La afirmación coincide con los hechos, datos y la evidencia disponible.' },
+        { color: '#FFB300', ring: 'rgba(255,179,0,0.22)',  label: 'Falta contexto',
+          text: 'La afirmación es correcta, pero necesita contexto, información adicional o aclaración.' },
+        { color: '#FF7043', ring: 'rgba(255,112,67,0.22)', label: 'Engañoso',
+          text: 'La afirmación es parcialmente cierta, pero omite elementos que cambian la impresión de lo dicho.' },
+        { color: '#E53935', ring: 'rgba(229,57,53,0.22)',  label: 'Falso',
+          text: 'La afirmación no tiene sustento y no coincide con la realidad, según los datos y evidencia disponible.' },
+      ];
+
+      /* Smooth bulb colour — interpolate between gradient stops */
+      var cStops = [
+        { p:  0, r:  76, g: 175, b:  80 },
+        { p: 20, r:  76, g: 175, b:  80 },
+        { p: 47, r: 255, g: 179, b:   0 },
+        { p: 74, r: 255, g: 112, b:  67 },
+        { p:100, r: 229, g:  57, b:  53 },
+      ];
+      function lerpRgb(pct) {
+        for (var i = 0; i < cStops.length - 1; i++) {
+          var a = cStops[i], b = cStops[i + 1];
+          if (pct >= a.p && pct <= b.p) {
+            var t = (b.p > a.p) ? (pct - a.p) / (b.p - a.p) : 0;
+            return [
+              Math.round(a.r + (b.r - a.r) * t),
+              Math.round(a.g + (b.g - a.g) * t),
+              Math.round(a.b + (b.b - a.b) * t),
+            ];
+          }
+        }
+        var last = cStops[cStops.length - 1];
+        return [last.r, last.g, last.b];
+      }
+
+      function syncBgSize() {
+        if (track && fill) fill.style.backgroundSize = track.offsetWidth + 'px 100%';
+      }
+
+      var lastIdx = -1;
+
+      function update() {
+        var scrollY   = window.scrollY || window.pageYOffset;
+        var top       = section.getBoundingClientRect().top + scrollY;
+        var range     = section.offsetHeight - window.innerHeight;
+        var progress  = range > 0 ? Math.max(0, Math.min(1, (scrollY - top) / range)) : 0;
+        var pct       = progress * 100;
+
+        /* Fill width — directly driven by scroll, no CSS transition */
+        if (fill)  fill.style.width = pct + '%';
+
+        /* Smooth bulb + thumb colour */
+        var rgb  = lerpRgb(pct);
+        var col  = 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+        var ring = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.22)';
+        if (bulb)  { bulb.style.background = col; bulb.style.boxShadow = '0 0 0 8px ' + ring; }
+        if (thumb) thumb.style.borderColor = col;
+
+        /* State text — changes at tick thresholds */
+        var idx = pct >= 74 ? 3 : pct >= 47 ? 2 : pct >= 20 ? 1 : 0;
+        if (idx !== lastIdx) {
+          lastIdx = idx;
+          var s = states[idx];
+          if (nameEl) { nameEl.style.color = s.color; nameEl.textContent = s.label; }
+          if (descEl) {
+            descEl.style.opacity = '0';
+            setTimeout(function () { descEl.textContent = s.text; descEl.style.opacity = '1'; }, 180);
+          }
+          ticks.forEach(function (t, i) {
+            t.classList.toggle('is-active', i === idx);
+            t.style.setProperty('--ht-color', i === idx ? s.color : '');
+          });
+        }
+      }
+
+      /* rAF-throttled scroll listener */
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(function () { update(); ticking = false; }); ticking = true; }
+      }, { passive: true });
+
+      syncBgSize();
+      window.addEventListener('resize', syncBgSize);
+      update();
+    }());
+
+    </script>
+
+  </body>
+
+</html>

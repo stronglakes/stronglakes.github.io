@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Subin Holiday Party — Invitación Digital & Gestión de Evento | Luis Fernando Fuertes</title>
+    <meta name="description" content="Diseño de invitación digital, sistema de registro WordPress–Microsoft, control de acceso y campañas de recordatorio por email y SMS para la holiday party de Subin Law en Nueva York.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, Subin, invitación digital, evento, WordPress, Microsoft, email marketing, SMS, Nueva York">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="Subin Holiday Party — Invitación Digital | Luis Fernando Fuertes">
+    <meta property="og:description" content="Gestión tecnológica completa para la holiday party del bufete Subin Law en Nueva York: invitación, registro, check-in y mailing.">
+    <meta property="og:url" content="https://stronglakes.github.io/project-details-subin-holiday.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <style>
+      .hp-carousel{position:relative;width:100%;height:100%;contain:layout style paint}
+      .hp-c-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;will-change:opacity}
+      .hp-c-frame.hp-c-active{opacity:1}
+
+      /* ===== COUNTDOWN ===== */
+
+      .hp-countdown {
+        background: linear-gradient(to bottom, #020507 0%, #103464 100%);
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 28px;
+        box-sizing: border-box;
+        border-radius: inherit;
+      }
+      .hp-countdown__title {
+        color: #ffffff;
+        font-family: 'Averia Serif Libre', Georgia, serif;
+        font-weight: 700;
+        font-size: clamp(1.3rem, 1.6vw, 1.7rem);
+        text-align: center;
+        line-height: 1.45;
+        margin: 0 0 36px;
+      }
+      .hp-countdown__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        width: 100%;
+      }
+      .hp-countdown__card {
+        background: #EFEFEF0F;
+        border-radius: 16px;
+        padding: 28px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .hp-countdown__num {
+        color: #EAC780;
+        font-family: 'Averia Serif Libre', Georgia, serif;
+        font-size: clamp(30px, 3.5vw, 48px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.01em;
+      }
+      .hp-countdown__label {
+        color: #ffffff;
+        font-family: 'Averia Serif Libre', Georgia, serif;
+        font-size: clamp(12px, 1.2vw, 16px);
+        font-weight: 400;
+        margin-top: 8px;
+        letter-spacing: 0.04em;
+      }
+      .hp-countdown__end {
+        display: none;
+        color: #ffffff;
+        font-family: 'Averia Serif Libre', Georgia, serif;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-top: 20px;
+      }
+      @media (max-width: 600px) {
+        .hp-countdown__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .hp-countdown__num  { font-size: 36px; }
+        .hp-countdown__label { font-size: 14px; }
+      }
+
+      /* ===== SMS RECORDATORIO VIDEO ===== */
+      .hp-sms-card {
+        padding: 0;
+        position: relative;
+      }
+      .hp-sms-video {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: 50% 30%;
+        z-index: 0;
+      }
+      .hp-sms-gradient {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 55%;
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+        z-index: 1;
+      }
+      .hp-sms-text {
+        position: absolute;
+        bottom: 40px;
+        left: 48px;
+        z-index: 2;
+        max-width: 600px;
+      }
+      .hp-sms-label {
+        margin: 0 0 10px;
+        color: #aaaaaa;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .hp-sms-title {
+        margin: 0;
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      @media (max-width: 600px) {
+        .hp-sms-text { bottom: 24px; left: 24px; right: 24px; max-width: 100%; }
+        .hp-sms-title { font-size: 18px; }
+      }
+    </style>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Content Start -->
+    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+
+      <!-- Titular del proyecto -->
+      <div class="mxd-section mxd-section-inner-headline padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div class="mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="project-details-subin.html" rel="noopener">
+                      <span class="btn-caption">Ver proyecto Subin</span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div class="mxd-block__content">
+                    <div class="mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">Holiday Party</h1>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="inner-headline__paragraph loading__item">
+                    <p>La holiday party anual de Subin Law no era un evento cualquiera: abogados socios, jueces, asambleístas y personalidades del ámbito jurídico y político de Nueva York eran parte de la lista de invitados. El nivel del evento exigía una logística digital impecable, desde la primera invitación hasta el control de acceso en la puerta.</p>
+                  </div>
+                  <div class="inner-headline__data">
+                    <div class="mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Cliente</p>
+                              <p class="mxd-data-list__content">Subin Law</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Servicio</p>
+                              <p class="mxd-data-list__content">Evento Digital / Marketing</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Industria</p>
+                              <p class="mxd-data-list__content">Legal / New York</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Fecha</p>
+                              <p class="mxd-data-list__content">Diciembre 2025</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <span class="tag tag-default tag-outline-medium">Invitación Digital</span>
+                    <span class="tag tag-default tag-outline-medium">WordPress</span>
+                    <span class="tag tag-default tag-outline-medium">Power Automate</span>
+                    <span class="tag tag-default tag-outline-medium">Microsoft 365</span>
+                    <span class="tag tag-default tag-outline-medium">Email Marketing</span>
+                    <span class="tag tag-default tag-outline-medium">SMS</span>
+                    <span class="tag tag-default tag-outline-medium">Evento</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen principal -->
+      <div class="mxd-section">
+        <div class="mxd-container">
+          <div class="mxd-divider loading__fade">
+            <div class="mxd-divider__video">
+              <img src="img/works/holiday/Subin-base-Holida.png" alt="Subin Holiday Party">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles del proyecto -->
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Reto -->
+          <div class="mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Reto</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up">Organizar la holiday party de un bufete con 70 años de historia en Manhattan, con una lista de invitados que incluía jueces, asambleístas y figuras del ámbito legal neoyorquino, requería una solución tecnológica a la altura del evento.</p>
+                      <p class="anim-uni-in-up">El bufete necesitaba gestionar todo el ciclo del evento de manera digital y centralizada: diseñar y distribuir una invitación formal que reflejara el prestigio del evento, habilitar un sistema de registro de asistentes con confirmación automática, garantizar la seguridad en el ingreso mediante verificación de identidad, y mantener el contacto con los invitados antes del evento a través de recordatorios por correo y SMS. El reto adicional era integrar el registro de asistentes con el ecosistema Microsoft que el equipo del bufete ya utilizaba internamente.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imágenes -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project-cards">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner bg-base-tint radius-m">
+                      <div class="hp-carousel">
+                        <img class="hp-c-frame hp-c-active" src="img/works/holiday/asistente-1.webp" alt="Holiday Party — Asistetes">
+                        <img class="hp-c-frame" src="img/works/holiday/asistente-2.webp" alt="Holiday Party — Asistetes" loading="lazy">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-project-cards__inner radius-m" style="padding:0;">
+                      <div class="hp-countdown">
+                        <p class="hp-countdown__title">Join us for a night of<br>joy and celebration!</p>
+                        <div class="hp-countdown__grid" id="hp-cd-grid">
+                          <div class="hp-countdown__card">
+                            <span class="hp-countdown__num" id="hp-cd-d">00</span>
+                            <span class="hp-countdown__label">Days</span>
+                          </div>
+                          <div class="hp-countdown__card">
+                            <span class="hp-countdown__num" id="hp-cd-h">00</span>
+                            <span class="hp-countdown__label">Hours</span>
+                          </div>
+                          <div class="hp-countdown__card">
+                            <span class="hp-countdown__num" id="hp-cd-m">00</span>
+                            <span class="hp-countdown__label">Minutes</span>
+                          </div>
+                          <div class="hp-countdown__card">
+                            <span class="hp-countdown__num" id="hp-cd-s">00</span>
+                            <span class="hp-countdown__label">Seconds</span>
+                          </div>
+                        </div>
+                        <p class="hp-countdown__end" id="hp-cd-end">¡El evento ha comenzado!</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner bg-base-tint radius-m">
+                      <img src="img/works/holiday/torre-centurion.png" alt="Holiday Party — Torre Centurion">
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-project-cards__inner hp-sms-card radius-m">
+                      <video class="hp-sms-video" autoplay muted loop playsinline>
+                        <source src="video/Holiday/sms.mp4" type="video/mp4">
+                      </video>
+                      <div class="hp-sms-gradient"></div>
+                      <div class="hp-sms-text">
+                        <p class="hp-sms-label">Recordatorios</p>
+                        <p class="hp-sms-title">Los invitados recibieron emails y SMS</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solución -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solución</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up">La invitación digital fue el resultado de una colaboración entre tres especialistas: <a href="https://www.instagram.com/xembrand_art/" target="_blank" rel="noopener">Xavier Medtranda</a> diseñó la composición gráfica —tipografía elegante, paleta acorde al evento de fin de año— y Anthony Pérez produjo y animó la pieza. El punto de partida fue una fotografía espontánea del CEO de Subin Law tomada en el propio lugar del evento, imagen que sirvió de base para generar con inteligencia artificial tanto la invitación como el video promocional. Mi rol fue adaptar toda esa producción al entorno web, preservar las animaciones en la plataforma digital y gestionar la distribución por email con seguimiento de apertura para identificar a los invitados que aún no habían respondido.</p>
+                      <p class="anim-uni-in-up">Para el registro de asistentes construí un formulario en WordPress integrado con Power Automate, que al recibir cada confirmación disparaba un flujo automatizado hacia Microsoft 365: los datos del asistente se escribían en tiempo real en una hoja de cálculo compartida con el equipo organizador, sin intervención manual. Esto permitía al equipo de Subin Law ver en todo momento cuántas personas habían confirmado, sus datos de contacto y cualquier requerimiento especial.</p>
+                      <p class="anim-uni-in-up">El sistema de check-in al ingreso del evento operaba sobre la misma base de datos: los organizadores podían verificar en tiempo real si un asistente estaba en la lista de confirmados, reduciendo tiempos de espera y eliminando la posibilidad de errores. La seguridad del evento quedaba respaldada por un registro digital consultable desde cualquier dispositivo.</p>
+                      <p class="anim-uni-in-up">La campaña de recordatorios se ejecutó en dos canales con personalización dinámica: cada email incluía el nombre del invitado en el asunto y el cuerpo, y fue diseñado con animaciones HTML para reforzar el tono del evento. Los invitados que no abrieron el correo recibieron un SMS de seguimiento con los detalles clave —dirección, código de vestimenta y hora de inicio— garantizando una alta tasa de confirmación efectiva el día del evento.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Componentes del sistema -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Sistema completo</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-data-list">
+                    <div class="container-fluid p-0">
+                      <div class="row g-0">
+                        <div class="col-12 col-md-6 mxd-data-list__column loading__item">
+                          <div class="mxd-data-list__item">
+                            <p class="mxd-data-list__name">Invitación digital</p>
+                            <p class="mxd-data-list__content">Diseño personalizado, distribución por email con tracking de apertura</p>
+                          </div>
+                          <div class="mxd-data-list__item">
+                            <p class="mxd-data-list__name">Registro de asistentes</p>
+                            <p class="mxd-data-list__content">Formulario WordPress + Power Automate con sincronización en tiempo real a Microsoft 365</p>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 mxd-data-list__column loading__item">
+                          <div class="mxd-data-list__item">
+                            <p class="mxd-data-list__name">Check-in &amp; seguridad</p>
+                            <p class="mxd-data-list__content">Sistema de verificación en puerta con lista de asistentes en tiempo real</p>
+                          </div>
+                          <div class="mxd-data-list__item">
+                            <p class="mxd-data-list__name">Campaña de recordatorios</p>
+                            <p class="mxd-data-list__content">Emails animados con nombre personalizado y SMS de seguimiento para no-openers</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegación entre proyectos -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project__nav">
+              <div class="mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 mxd-project__navitem left mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="project-details-subin.html">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Anterior</span>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-subin.html">
+                      <span>Subin — Migración CMS</span>
+                    </a>
+                  </div>
+                  <div class="col-6 mxd-project__navitem right mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="works-masonry.html">
+                      <span class="btn-caption">Ver todos</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="works-masonry.html">
+                      <span>Todos los proyectos</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Page Content End -->
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Countdown Timer -->
+    <script>
+    (function () {
+      var targetDate = new Date('2099-12-31T23:59:59');
+
+      var elD   = document.getElementById('hp-cd-d');
+      var elH   = document.getElementById('hp-cd-h');
+      var elM   = document.getElementById('hp-cd-m');
+      var elS   = document.getElementById('hp-cd-s');
+      var elEnd = document.getElementById('hp-cd-end');
+      var elGrid = document.getElementById('hp-cd-grid');
+      if (!elD) return;
+
+      function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+      function tick() {
+        var diff = targetDate - new Date();
+        if (diff <= 0) {
+          clearInterval(timer);
+          elGrid.style.display = 'none';
+          elEnd.style.display  = 'block';
+          return;
+        }
+        var days    = Math.floor(diff / 86400000);
+        var hours   = Math.floor((diff % 86400000) / 3600000);
+        var minutes = Math.floor((diff % 3600000)  / 60000);
+        var seconds = Math.floor((diff % 60000)    / 1000);
+        elD.textContent = pad(days);
+        elH.textContent = pad(hours);
+        elM.textContent = pad(minutes);
+        elS.textContent = pad(seconds);
+      }
+
+      tick();
+      var timer = setInterval(tick, 1000);
+    }());
+    </script>
+
+    <!-- Carousel -->
+    <script>
+    (function () {
+      var carousel = document.querySelector('.hp-carousel');
+      if (!carousel) return;
+      var frames = carousel.querySelectorAll('.hp-c-frame');
+      if (frames.length < 2) return;
+      var idx = 0, timer = null;
+
+      function next() {
+        frames[idx].classList.remove('hp-c-active');
+        idx = (idx + 1) % frames.length;
+        frames[idx].classList.add('hp-c-active');
+      }
+
+      function start() { if (!timer) timer = setInterval(next, 4000); }
+      function stop()  { clearInterval(timer); timer = null; }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries[0].isIntersecting ? start() : stop();
+        }, { threshold: 0.2 }).observe(carousel);
+      } else {
+        start();
+      }
+    }());
+    </script>
+
+  </body>
+
+</html>

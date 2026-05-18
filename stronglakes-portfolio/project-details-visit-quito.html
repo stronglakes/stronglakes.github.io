@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Visit Quito — Proyecto | Luis Fernando Fuertes</title>
+    <meta name="description" content="Diseño UX, integración de buscador inteligente y carga masiva de contenido para el portal oficial de turismo de Quito, Ecuador.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, Visit Quito, UX, WordPress, turismo, Quito, Ecuador, buscador">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="Visit Quito — Proyecto | Luis Fernando Fuertes">
+    <meta property="og:description" content="Diseño UX, integración de buscador inteligente y carga masiva de contenido para el portal oficial de turismo de Quito.">
+    <meta property="og:url" content="https://stronglakes.github.io/project-details-visit-quito.html">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Content Start -->
+    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+
+      <!-- Titular del proyecto -->
+      <div class="mxd-section mxd-section-inner-headline padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div class="mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="https://visitquito.ec/" target="_blank" rel="noopener">
+                      <span class="btn-caption">Ver proyecto</span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div class="mxd-block__content">
+                    <div class="mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">Visit Quito</h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12"></div>
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="inner-headline__paragraph loading__item">
+                    <p>Explora qué hacer en Quito y disfruta de su cultura, historia, gastronomía y paisajes. Siéntete en el Centro del Mundo y descubre lo mejor de la capital.</p>
+                  </div>
+                  <div class="inner-headline__data">
+                    <div class="mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Cliente</p>
+                              <p class="mxd-data-list__content">Visit Quito</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Servicio</p>
+                              <p class="mxd-data-list__content">Web</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Industria</p>
+                              <p class="mxd-data-list__content">Turismo</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Fecha</p>
+                              <p class="mxd-data-list__content">Enero 2026</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <span class="tag tag-default tag-outline-medium">UX/UI</span>
+                    <span class="tag tag-default tag-outline-medium">WordPress</span>
+                    <span class="tag tag-default tag-outline-medium">Turismo</span>
+                    <span class="tag tag-default tag-outline-medium">Buscador</span>
+                    <span class="tag tag-default tag-outline-medium">Contenido</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen principal -->
+      <div class="mxd-section">
+        <div class="mxd-container">
+          <div class="mxd-divider loading__fade">
+            <video autoplay muted loop playsinline style="width:100%;display:block;">
+              <source src="video/visit-quito/centro-histórico.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles del proyecto -->
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Reto -->
+          <div class="mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Reto</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up">Convertir el portal oficial de turismo en el punto de partida real para descubrir Quito.</p>
+                      <p class="anim-uni-in-up">El sitio contaba con una gran cantidad de contenido sobre tours, rutas y experiencias, pero carecía de organización clara y de un mecanismo que conectara al usuario con lo que realmente quería vivir. El home no orientaba al visitante desde el primer momento, y los listados de experiencias no estaban optimizados para la navegación. La ciudad — declarada Primer Patrimonio Cultural de la Humanidad por la UNESCO en 1978 — merecía un portal a la altura de su historia y su riqueza cultural.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imágenes -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project-cards">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner align-end bg-accent radius-m">
+                      <video src="/video/visit-quito.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></video>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-project-cards__inner align-end bg-base-tint radius-m">
+                      <img src="/img/works/visit-quito/visit-quito-mobile.png" alt="Visit Quito — Buscador">
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner bg-base-tint radius-m">
+                      <img src="img/works/visit-quito/Visit Quito Mockups.png" alt="Visit Quito — Listados">
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-project-cards__inner bg-base-tint radius-m">
+                      <video src="video/visit-quito/Quito%20tiene%20tanto%20por%20descubrir.%20Te%20dejamos%20una%20peque%C3%B1a%20muestra%20de%20todo%20lo%20que%20puedes%20descubrir%20.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solución -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solución</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up">Realicé una carga masiva de contenido estructurado para poblar el portal con tours, rutas gastronómicas, experiencias culturales y recorridos de aventura. En el home diseñé y conecté un buscador inteligente que genera recomendaciones personalizadas según lo que el usuario quiere vivir en Quito: aventura en los Andes, historia en el Centro Histórico, gastronomía local, cultura o naturaleza.</p>
+                      <p class="anim-uni-in-up">El catálogo del portal cuenta con más de 155 tours activos con filtros por precio, idioma, dificultad y tipo de grupo. Adicionalmente, edité y optimicé el plugin de listados para mejorar la presentación de las experiencias disponibles y reducir la fricción en la navegación, logrando que el contenido sea fácilmente descubrible para cualquier tipo de viajero.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+  
+          <!-- Navegación entre proyectos -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project__nav">
+              <div class="mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 mxd-project__navitem left mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="works-masonry.html">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Volver</span>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="works-masonry.html">
+                      <span>Ver todos los proyectos</span>
+                    </a>
+                  </div>
+                  <div class="col-6 mxd-project__navitem right mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="project-details.html">
+                      <span class="btn-caption">Siguiente</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details.html">
+                      <span>Próximo proyecto</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Page Content End -->
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+
+</html>

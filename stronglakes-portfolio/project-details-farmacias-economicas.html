@@ -1,0 +1,1090 @@
+﻿<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Farmacias Económicas — Proyecto | Luis Fernando Fuertes</title>
+    <meta name="description" content="Rediseño web completo, catálogo WooCommerce por patologías, asistente de IA para puntos y promociones, y revista digital de salud para Farmacias Económicas.">
+    <meta name="keywords" content="Luis Fernando Fuertes, stronglakes, Farmacias Económicas, UX, WordPress, WooCommerce, WhatsApp, IA, salud, Ecuador">
+    <meta name="author" content="Luis Fernando Fuertes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/manifest.webmanifest">
+    <meta property="og:title" content="Farmacias Económicas — Proyecto | Luis Fernando Fuertes">
+    <meta property="og:description" content="Rediseño web completo, catálogo WooCommerce por patologías, asistente de IA y revista digital de salud para Farmacias Económicas.">
+    <meta property="og:url" content="https://stronglakes.github.io/project-details-farmacias-economicas.html">
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+      @keyframes fe-scroll-left  { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+      @keyframes fe-scroll-right { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+      .fe-track-left  { animation: fe-scroll-left  20s linear infinite; will-change: transform; backface-visibility: hidden; }
+      .fe-track-right { animation: fe-scroll-right 26s linear infinite; will-change: transform; backface-visibility: hidden; }
+
+      /* ===== WHATSAPP PURCHASE DEMO ===== */
+      .fe-wad {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: #E5DDD5;
+        position: relative;
+        overflow: hidden;
+        font-family: inherit;
+      }
+      .fe-wad::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='50' cy='10' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='30' cy='35' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='70' cy='50' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='10' cy='60' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3C/svg%3E");
+        pointer-events: none;
+      }
+      .fe-wad-header {
+        background: #075E54;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .fe-wad-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 18px;
+      }
+      .fe-wad-header-info { flex: 1; }
+      .fe-wad-header-name { color: #fff; font-weight: 600; font-size: 13.5px; line-height: 1.2; margin: 0; }
+      .fe-wad-header-status { color: rgba(255,255,255,0.7); font-size: 11.5px; margin: 0; }
+      .fe-wad-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: relative;
+        z-index: 1;
+        scroll-behavior: smooth;
+      }
+      .fe-wad-messages::-webkit-scrollbar { width: 4px; }
+      .fe-wad-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+      .fe-wad-msg {
+        max-width: 82%;
+        padding: 7px 10px 4px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        line-height: 1.5;
+        word-break: break-word;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        animation: wadIn 0.22s ease both;
+      }
+      @keyframes wadIn {
+        from { opacity: 0; transform: translateY(6px) scale(0.98); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      .fe-wad-msg.bot { background: #fff; border-radius: 0 8px 8px 8px; align-self: flex-start; }
+      .fe-wad-msg.user { background: #DCF8C6; border-radius: 8px 0 8px 8px; align-self: flex-end; }
+      .fe-wad-msg-time { font-size: 10px; color: rgba(0,0,0,0.35); text-align: right; margin-top: 2px; display: block; }
+      .fe-wad-msg.user .fe-wad-msg-time::after { content: ' ✓✓'; }
+      .fe-wad-typing {
+        background: #fff;
+        border-radius: 0 8px 8px 8px;
+        padding: 10px 14px;
+        align-self: flex-start;
+        display: flex;
+        gap: 3px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        animation: wadIn 0.2s ease both;
+      }
+      .fe-wad-typing span {
+        width: 6px; height: 6px;
+        background: #90959b;
+        border-radius: 50%;
+        animation: wadTyping 1.2s infinite ease-in-out;
+      }
+      .fe-wad-typing span:nth-child(2) { animation-delay: 0.2s; }
+      .fe-wad-typing span:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes wadTyping {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-5px); }
+      }
+      .fe-wad-product {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        align-self: flex-start;
+        max-width: 88%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        animation: wadIn 0.2s ease both;
+      }
+      .fe-wad-product-top {
+        background: linear-gradient(135deg, #DC1D16 0%, #a01510 100%);
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .fe-wad-product-emoji { font-size: 26px; }
+      .fe-wad-product-name { color: #fff; font-weight: 700; font-size: 13px; margin: 0; line-height: 1.3; }
+      .fe-wad-product-qty { color: rgba(255,255,255,0.75); font-size: 11px; margin: 2px 0 0; }
+      .fe-wad-product-bottom { padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
+      .fe-wad-product-price { font-weight: 700; font-size: 16px; color: #128C7E; margin: 0; }
+      .fe-wad-product-badge { font-size: 11px; color: #555; margin: 0; }
+      .fe-wad-promo {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        align-self: flex-start;
+        max-width: 90%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        animation: wadIn 0.2s ease both;
+      }
+      .fe-wad-promo-top { background: linear-gradient(135deg, #FFB300 0%, #FF6F00 100%); padding: 10px 14px; color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; }
+      .fe-wad-promo-body { padding: 10px 14px; font-size: 12.5px; color: #333; line-height: 1.6; }
+      .fe-wad-farmacias {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        align-self: flex-start;
+        max-width: 92%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        animation: wadIn 0.2s ease both;
+      }
+      .fe-wad-farmacia { padding: 9px 14px; font-size: 12px; color: #444; border-bottom: 1px solid #f0f0f0; line-height: 1.5; }
+      .fe-wad-farmacia:last-child { border-bottom: none; }
+      .fe-wad-farmacia strong { color: #111; display: block; font-size: 12.5px; font-weight: 600; }
+      .fe-wad-opts {
+        background: #f0f0f0;
+        padding: 10px 12px;
+        flex-shrink: 0;
+        border-top: 1px solid #ddd;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        position: relative;
+        z-index: 1;
+        min-height: 54px;
+      }
+      .fe-wad-opt {
+        background: #fff;
+        border: 1.5px solid #25D366;
+        color: #128C7E;
+        border-radius: 100px;
+        padding: 7px 13px;
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.15s, color 0.15s;
+        font-family: inherit;
+        line-height: 1.2;
+      }
+      .fe-wad-opt:hover { background: #25D366; color: #fff; border-color: #25D366; }
+      .fe-wad-opt-cta { background: #25D366 !important; color: #fff !important; font-weight: 700; }
+      .fe-wad-opt-cta:hover { background: #1aab54 !important; }
+      .fe-wad-restart {
+        width: 100%;
+        text-align: center;
+        padding: 4px 0 0;
+        font-size: 11px;
+        color: #aaa;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .fe-wad-restart:hover { color: #555; }
+
+      /* ===== WHATSAPP DARK MODE ===== */
+      @media (prefers-color-scheme: dark) {
+        .fe-wad { background: #111B21; }
+        .fe-wad::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='50' cy='10' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='30' cy='35' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='70' cy='50' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='10' cy='60' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3C/svg%3E"); }
+        .fe-wad-header { background: #202C33; }
+        .fe-wad-msg.bot { background: #202C33; color: #E9EDEF; }
+        .fe-wad-msg.user { background: #005C4B; color: #E9EDEF; }
+        .fe-wad-msg-time { color: rgba(255,255,255,0.4); }
+        .fe-wad-typing { background: #202C33; }
+        .fe-wad-typing span { background: #8696A0; }
+        .fe-wad-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+        .fe-wad-product { background: #202C33; }
+        .fe-wad-product-price { color: #00A884; }
+        .fe-wad-product-badge { color: #8696A0; }
+        .fe-wad-promo { background: #202C33; }
+        .fe-wad-promo-body { color: #E9EDEF; }
+        .fe-wad-farmacias { background: #202C33; }
+        .fe-wad-farmacia { color: #D1D7DB; border-color: #2D3B43; }
+        .fe-wad-farmacia strong { color: #E9EDEF; }
+        .fe-wad-opts { background: #202C33; border-color: #2D3B43; }
+        .fe-wad-opt { background: #2A3942; color: #00A884; }
+        .fe-wad-opt:hover { background: #25D366; color: #fff; border-color: #25D366; }
+        .fe-wad-opt-cta { background: #00A884 !important; }
+        .fe-wad-opt-cta:hover { background: #008f72 !important; }
+        .fe-wad-restart { color: #8696A0; }
+        .fe-wad-restart:hover { color: #D1D7DB; }
+      }
+      [color-scheme=dark] .fe-wad { background: #111B21; }
+      [color-scheme=dark] .fe-wad::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='50' cy='10' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='30' cy='35' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='70' cy='50' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3Ccircle cx='10' cy='60' r='1.5' fill='%23728b9b' opacity='0.2'/%3E%3C/svg%3E"); }
+      [color-scheme=dark] .fe-wad-header { background: #202C33; }
+      [color-scheme=dark] .fe-wad-msg.bot { background: #202C33; color: #E9EDEF; }
+      [color-scheme=dark] .fe-wad-msg.user { background: #005C4B; color: #E9EDEF; }
+      [color-scheme=dark] .fe-wad-msg-time { color: rgba(255,255,255,0.4); }
+      [color-scheme=dark] .fe-wad-typing { background: #202C33; }
+      [color-scheme=dark] .fe-wad-typing span { background: #8696A0; }
+      [color-scheme=dark] .fe-wad-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+      [color-scheme=dark] .fe-wad-product { background: #202C33; }
+      [color-scheme=dark] .fe-wad-product-price { color: #00A884; }
+      [color-scheme=dark] .fe-wad-product-badge { color: #8696A0; }
+      [color-scheme=dark] .fe-wad-promo { background: #202C33; }
+      [color-scheme=dark] .fe-wad-promo-body { color: #E9EDEF; }
+      [color-scheme=dark] .fe-wad-farmacias { background: #202C33; }
+      [color-scheme=dark] .fe-wad-farmacia { color: #D1D7DB; border-color: #2D3B43; }
+      [color-scheme=dark] .fe-wad-farmacia strong { color: #E9EDEF; }
+      [color-scheme=dark] .fe-wad-opts { background: #202C33; border-color: #2D3B43; }
+      [color-scheme=dark] .fe-wad-opt { background: #2A3942; color: #00A884; }
+      [color-scheme=dark] .fe-wad-opt:hover { background: #25D366; color: #fff; border-color: #25D366; }
+      [color-scheme=dark] .fe-wad-opt-cta { background: #00A884 !important; }
+      [color-scheme=dark] .fe-wad-opt-cta:hover { background: #008f72 !important; }
+      [color-scheme=dark] .fe-wad-restart { color: #8696A0; }
+      [color-scheme=dark] .fe-wad-restart:hover { color: #D1D7DB; }
+
+      /* ===== WHATSAPP LIGHT MODE (override system dark) ===== */
+      [color-scheme=light] .fe-wad { background: #E5DDD5; }
+      [color-scheme=light] .fe-wad::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='50' cy='10' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='30' cy='35' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='70' cy='50' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3Ccircle cx='10' cy='60' r='1.5' fill='%23c8b8a2' opacity='0.3'/%3E%3C/svg%3E"); }
+      [color-scheme=light] .fe-wad-header { background: #075E54; }
+      [color-scheme=light] .fe-wad-msg.bot { background: #fff; color: inherit; }
+      [color-scheme=light] .fe-wad-msg.user { background: #DCF8C6; color: inherit; }
+      [color-scheme=light] .fe-wad-msg-time { color: rgba(0,0,0,0.35); }
+      [color-scheme=light] .fe-wad-typing { background: #fff; }
+      [color-scheme=light] .fe-wad-typing span { background: #90959b; }
+      [color-scheme=light] .fe-wad-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); }
+      [color-scheme=light] .fe-wad-product { background: #fff; }
+      [color-scheme=light] .fe-wad-product-price { color: #128C7E; }
+      [color-scheme=light] .fe-wad-product-badge { color: #555; }
+      [color-scheme=light] .fe-wad-promo { background: #fff; }
+      [color-scheme=light] .fe-wad-promo-body { color: #333; }
+      [color-scheme=light] .fe-wad-farmacias { background: #fff; }
+      [color-scheme=light] .fe-wad-farmacia { color: #444; border-color: #f0f0f0; }
+      [color-scheme=light] .fe-wad-farmacia strong { color: #111; }
+      [color-scheme=light] .fe-wad-opts { background: #f0f0f0; border-color: #ddd; }
+      [color-scheme=light] .fe-wad-opt { background: #fff; color: #128C7E; }
+      [color-scheme=light] .fe-wad-opt:hover { background: #25D366; color: #fff; border-color: #25D366; }
+      [color-scheme=light] .fe-wad-opt-cta { background: #25D366 !important; }
+      [color-scheme=light] .fe-wad-opt-cta:hover { background: #1aab54 !important; }
+      [color-scheme=light] .fe-wad-restart { color: #aaa; }
+      [color-scheme=light] .fe-wad-restart:hover { color: #555; }
+
+      /* ===== CATEGORY GRID ===== */
+      .fe-cg {
+        width: 100%; height: 100%; box-sizing: border-box;
+        padding: 20px;
+        background: url('img/works/farmacias-economicas/promociones.png') center/cover no-repeat;
+        display: flex; align-items: flex-end; justify-content: center;
+        border-radius: var(--_radius-m);
+        position: relative;
+        font-family: inherit;
+      }
+      .fe-cg::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%);
+        border-radius: var(--_radius-m);
+      }
+      .fe-cg-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        width: 100%;
+      }
+      @media (max-width: 767px) { .fe-cg-grid { grid-template-columns: repeat(2, 1fr); } }
+      .fe-cg-card {
+        background: #ffffff; border: 1.5px solid #e8e8e8; border-radius: 14px;
+        padding: 20px 24px; display: flex; align-items: center; gap: 16px;
+        transition: border-color 0.22s, box-shadow 0.22s, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: default;
+      }
+      .fe-cg-card:hover {
+        border-color: #DC1D16;
+        box-shadow: 0 8px 24px rgba(220,29,22,0.13);
+        transform: translateY(-6px);
+      }
+      .fe-cg-icon { flex-shrink: 0; display: flex; }
+      .fe-cg-icon svg { transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
+      .fe-cg-card:hover .fe-cg-icon svg { transform: scale(1.2); }
+      .fe-cg-label { font-size: 17px; font-weight: 700; color: #111111; margin: 0; line-height: 1.2; }
+
+      @media (prefers-color-scheme: dark) {
+        .fe-cg::before { background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%); }
+        .fe-cg-card { background: #ffffff; border-color: #e8e8e8; }
+        .fe-cg-label { color: #111111; }
+      }
+      [color-scheme=dark] .fe-cg::before { background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%); }
+      [color-scheme=dark] .fe-cg-card { background: #ffffff; border-color: #e8e8e8; }
+      [color-scheme=dark] .fe-cg-label { color: #111111; }
+      [color-scheme=light] .fe-cg::before { background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%); }
+      [color-scheme=light] .fe-cg-card { background: #ffffff; border-color: #e8e8e8; }
+      [color-scheme=light] .fe-cg-label { color: #111111; }
+
+      .fe-marquee-wrap span { font-family: inherit !important; }
+      .fe-cg-label { font-family: inherit; }
+    </style>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  </head>
+
+  <body>
+
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Menu Start -->
+    <div id="site-nav"></div>
+    <!-- Menu End -->
+
+    <!-- Header Start -->
+    <header id="header" class="mxd-header">
+      <div class="mxd-header__logo loading__fade">
+        <a href="index.html" class="mxd-logo">
+          <svg class="mxd-logo__image" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+            <style type="text/css">.mxd-logo__bg{fill:var(--base-opp);}.mxd-logo__cat{clip-path:url(#mxd-logo__id);fill:var(--base);}</style>
+            <path class="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z"/>
+            <g><defs><path id="mxd-logo__clippath" d="M28,0C2.9,0,0,16.9,0,28s2.9,28,28,28s28-16.9,28-28S53.1,0,28,0z"/></defs>
+            <clipPath id="mxd-logo__id"><use xlink:href="#mxd-logo__clippath" style="overflow:visible;"/></clipPath>
+            <path class="mxd-logo__cat" d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3L20.5,37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28L28,26.1z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1L14,26.1z"/></g>
+          </svg>
+          <span class="mxd-logo__text">Luis<br>Fernando<br><span style="font-size: 1.6rem; color: var(--t-medium); font-weight: 400;">@stronglakes</span></span>
+        </a>
+      </div>
+      <div class="mxd-header__controls loading__fade">
+        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="contact.html" aria-label="Hablemos">
+          <span class="btn-caption">Hablemos</span>
+          <i class="ph-bold ph-arrow-up-right"></i>
+        </a>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Content Start -->
+    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+
+      <!-- Titular del proyecto -->
+      <div class="mxd-section mxd-section-inner-headline padding-default">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div class="mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="https://farmaciaseconomicas.com.ec/" target="_blank" rel="noopener">
+                      <span class="btn-caption">Ver proyecto</span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div class="mxd-block__content">
+                    <div class="mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">Farmacias Económicas</h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12"></div>
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="inner-headline__paragraph loading__item">
+                    <p>Rediseño digital completo para una cadena de farmacias con presencia nacional: catálogo inteligente por patologías, asistente de IA para puntos y promociones, y una revista de salud que conecta con los pacientes más allá de la venta.</p>
+                  </div>
+                  <div class="inner-headline__data">
+                    <div class="mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Cliente</p>
+                              <p class="mxd-data-list__content">Farmacias Económicas</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Servicio</p>
+                              <p class="mxd-data-list__content">Web / eCommerce</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 mxd-data-list__column loading__item">
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Industria</p>
+                              <p class="mxd-data-list__content">Salud &amp; Retail</p>
+                            </div>
+                            <div class="mxd-data-list__item">
+                              <p class="mxd-data-list__name">Fecha</p>
+                              <p class="mxd-data-list__content">2025</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <span class="tag tag-default tag-outline-medium">UX/UI</span>
+                    <span class="tag tag-default tag-outline-medium">WordPress</span>
+                    <span class="tag tag-default tag-outline-medium">WooCommerce</span>
+                    <span class="tag tag-default tag-outline-medium">WhatsApp</span>
+                    <span class="tag tag-default tag-outline-medium">Asistente IA</span>
+                    <span class="tag tag-default tag-outline-medium">Salud</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen / video principal -->
+      <div class="mxd-section">
+        <div class="mxd-container">
+          <div class="mxd-divider loading__fade" style="cursor: col-resize;">
+            <!-- Before / After Slider -->
+            <div class="mxd-ba" style="position: relative; width: 100%; height: 100%;">
+              <!-- Después (capa base) -->
+              <img class="mxd-ba__after" src="img/works/farmacias-economicas/despues-v2.png" alt="Después — Farmacias Económicas" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+              <!-- Antes (capa recortada) -->
+              <div class="mxd-ba__clip" style="position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden;">
+                <img class="mxd-ba__before" src="img/works/farmacias-economicas/antes-v2.png" alt="Antes — Farmacias Económicas" style="position: absolute; top: 0; left: 0; height: 100%; object-fit: cover; object-position: top;">
+              </div>
+              <!-- Divisor -->
+              <div class="mxd-ba__divider" style="position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(255,255,255,0.9); transform: translateX(-50%); pointer-events: none;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; background: white; box-shadow: 0 2px 16px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; gap: 2px; pointer-events: none;">
+                  <i class="ph-bold ph-arrow-left" style="font-size: 14px; color: #333;"></i>
+                  <i class="ph-bold ph-arrow-right" style="font-size: 14px; color: #333;"></i>
+                </div>
+              </div>
+              <!-- Etiquetas -->
+              <span style="position: absolute; bottom: 16px; left: 16px; background: rgba(0,0,0,0.6); color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 1.3rem; font-weight: 500; pointer-events: none; letter-spacing: 0.03em;">Antes</span>
+              <span style="position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,0.6); color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 1.3rem; font-weight: 500; pointer-events: none; letter-spacing: 0.03em;">Después</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles del proyecto -->
+      <div class="mxd-section mxd-project overflow-hidden">
+        <div class="mxd-container grid-container">
+
+          <!-- Reto -->
+          <div class="mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Reto</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up">Transformar un catálogo de productos en archivos JSON en una experiencia digital centrada en el paciente.</p>
+                      <p class="anim-uni-in-up">El sitio anterior mostraba los medicamentos en simples tablas HTML, sin jerarquía, sin búsqueda y sin contexto para el usuario. No había manera de navegar por necesidad de salud, de conocer promociones activas ni de gestionar los puntos acumulados en compras. La imagen digital de la cadena no reflejaba la confianza y cercanía que caracterizan a sus locales físicos. Era urgente modernizar la experiencia para que el canal web se convirtiera en una herramienta real de ventas y fidelización.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imágenes -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project-cards">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner bg-base-tint radius-m">
+                      <img src="img/works/farmacias-economicas/compra.png" alt="Farmacias Económicas — Compra">
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-project-cards__inner radius-m fe-marquee-wrap" style="background:#ffffff; overflow:hidden; display:flex; flex-direction:column; justify-content:center; gap:14px; padding:36px 0; min-height:260px;">
+
+                      <!-- Fila 1 — gira a la izquierda -->
+                      <div style="overflow:hidden; width:100%; mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent); -webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);">
+                        <div class="fe-track-left" style="display:flex; gap:10px; width:max-content;">
+                          <!-- Set 1 -->
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap; letter-spacing:0.02em;">💊 Diabetes</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🫀 Hipertensión</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🦋 Tiroides</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🤧 Alergias</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🧪 Colesterol</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🦴 Artritis</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🫁 Respiratorio</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">💊 Vitaminas</span>
+                          <!-- Set 2 (duplicado para loop) -->
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap; letter-spacing:0.02em;">💊 Diabetes</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🫀 Hipertensión</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🦋 Tiroides</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🤧 Alergias</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🧪 Colesterol</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🦴 Artritis</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🫁 Respiratorio</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">💊 Vitaminas</span>
+                        </div>
+                      </div>
+
+                      <!-- Fila 2 — gira a la derecha -->
+                      <div style="overflow:hidden; width:100%; mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent); -webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);">
+                        <div class="fe-track-right" style="display:flex; gap:10px; width:max-content;">
+                          <!-- Set 1 -->
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">❤️ Cardiovascular</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🌿 Gastritis</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🧴 Dermatología</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🤒 Dolor y Fiebre</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">👶 Salud Infantil</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🧠 Neurología</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">💉 Antibióticos</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">👁️ Oftalmología</span>
+                          <!-- Set 2 (duplicado para loop) -->
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">❤️ Cardiovascular</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🌿 Gastritis</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🧴 Dermatología</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🤒 Dolor y Fiebre</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">👶 Salud Infantil</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🧠 Neurología</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">💉 Antibióticos</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">👁️ Oftalmología</span>
+                        </div>
+                      </div>
+
+                      <!-- Fila 3 — gira a la izquierda (más lenta) -->
+                      <div style="overflow:hidden; width:100%; mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent); -webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);">
+                        <div class="fe-track-left" style="display:flex; gap:10px; width:max-content; animation-duration:30s;">
+                          <!-- Set 1 -->
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🩺 Urología</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🌸 Ginecología</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🦷 Odontología</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🏃 Ortopedia</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">😴 Insomnio</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🧬 Oncología de soporte</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🌡️ Fiebre Crónica</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🫶 Bienestar General</span>
+                          <!-- Set 2 (duplicado para loop) -->
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🩺 Urología</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🌸 Ginecología</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🦷 Odontología</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🏃 Ortopedia</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">😴 Insomnio</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🧬 Oncología de soporte</span>
+                          <span style="background:#DC1D16; color:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:600; white-space:nowrap;">🌡️ Fiebre Crónica</span>
+                          <span style="border:2px solid #DC1D16; color:#111111; background:#fff; padding:9px 18px; border-radius:50px; font-size:1.3rem; font-weight:500; white-space:nowrap;">🫶 Bienestar General</span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <div class="mxd-project-cards__inner radius-m" style="padding:0; overflow:hidden;">
+                      <div class="fe-wad">
+                        <div class="fe-wad-header">
+                          <div class="fe-wad-avatar">💊</div>
+                          <div class="fe-wad-header-info">
+                            <p class="fe-wad-header-name">Farmacias Económicas</p>
+                            <p class="fe-wad-header-status">Asistente Virtual · En línea</p>
+                          </div>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.55)" stroke="none"><circle cx="12" cy="12" r="10"/><rect x="11" y="8" width="2" height="4"/><rect x="11" y="14" width="2" height="2"/></svg>
+                        </div>
+                        <div class="fe-wad-messages" id="fe-wad-messages"></div>
+                        <div class="fe-wad-opts" id="fe-wad-opts"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-7 mxd-project-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <div class="mxd-project-cards__inner radius-m" style="padding:0;">
+                      <div class="fe-cg">
+                        <div class="fe-cg-grid">
+
+                          <!-- Salud -->
+                          <div class="fe-cg-card">
+                            <span class="fe-cg-icon">
+                              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#DC1D16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                              </svg>
+                            </span>
+                            <p class="fe-cg-label">Salud</p>
+                          </div>
+
+                          <!-- Cuidado Infantil -->
+                          <div class="fe-cg-card">
+                            <span class="fe-cg-icon">
+                              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#DC1D16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 2h8"/>
+                                <path d="M9 2v2"/>
+                                <path d="M15 2v2"/>
+                                <path d="M8 4h8v12a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V4z"/>
+                                <path d="M9 11h6"/>
+                              </svg>
+                            </span>
+                            <p class="fe-cg-label">Cuidado Infantil</p>
+                          </div>
+
+                          <!-- Vitaminas -->
+                          <div class="fe-cg-card">
+                            <span class="fe-cg-icon">
+                              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#DC1D16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+                                <path d="m8.5 8.5 7 7"/>
+                              </svg>
+                            </span>
+                            <p class="fe-cg-label">Vitaminas</p>
+                          </div>
+
+                          <!-- Suplementos -->
+                          <div class="fe-cg-card">
+                            <span class="fe-cg-icon">
+                              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#DC1D16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 2h6v3H9z"/>
+                                <path d="M8 5h8l1.5 14a1 1 0 0 1-1 1.1H7.5a1 1 0 0 1-1-1.1L8 5z"/>
+                                <line x1="12" y1="11" x2="12" y2="16"/>
+                                <line x1="9.5" y1="13.5" x2="14.5" y2="13.5"/>
+                              </svg>
+                            </span>
+                            <p class="fe-cg-label">Suplementos</p>
+                          </div>
+
+                          <!-- Skincare -->
+                          <div class="fe-cg-card">
+                            <span class="fe-cg-icon">
+                              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#DC1D16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                              </svg>
+                            </span>
+                            <p class="fe-cg-label">Skincare</p>
+                          </div>
+
+                          <!-- Belleza -->
+                          <div class="fe-cg-card">
+                            <span class="fe-cg-icon">
+                              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#DC1D16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                              </svg>
+                            </span>
+                            <p class="fe-cg-label">Belleza</p>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solución -->
+          <div class="mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div class="mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solución</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div class="mxd-project__content">
+                    <div class="mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up">Realicé un rediseño completo del sitio en WordPress con WooCommerce configurado en modo catálogo: los productos ya no se listan desde archivos JSON planos, sino que los organicé por enfermedades y condiciones que requieren medicación frecuente — diabetes, hipertensión, tiroides, alergias, entre otras — permitiendo que el usuario encuentre lo que necesita desde su realidad, no desde un código de producto.</p>
+                      <p class="anim-uni-in-up">Cada producto cuenta con un botón de compra que transfiere el pedido directamente a WhatsApp, eliminando la fricción del checkout tradicional y aprovechando el canal de comunicación más usado en Ecuador. Para la fidelización, integré un asistente de IA capaz de consultar promociones vigentes y el saldo de puntos de cada cliente: el usuario ingresa su cédula y el asistente responde en tiempo real con su saldo y las ofertas disponibles.</p>
+                      <p class="anim-uni-in-up">Complementando la experiencia, agregué una revista digital de cuidado de la salud con artículos, consejos y guías editoriales que posicionan a Farmacias Económicas como un referente de bienestar, no solo un punto de venta.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Navegación entre proyectos -->
+          <div class="mxd-project__block no-margin">
+            <div class="mxd-project__nav">
+              <div class="mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 mxd-project__navitem left mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="works-masonry.html">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Volver</span>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="works-masonry.html">
+                      <span>Ver todos los proyectos</span>
+                    </a>
+                  </div>
+                  <div class="col-6 mxd-project__navitem right mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="project-details-visit-quito.html">
+                      <span class="btn-caption">Siguiente</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="mxd-project__link anim-uni-in-up" href="project-details-visit-quito.html">
+                      <span>Próximo proyecto</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mxd-section overflow-hidden">
+        <div class="mxd-container">
+          <div class="mxd-block">
+            <div class="mxd-promo">
+              <div class="mxd-promo__inner anim-zoom-out-container">
+                <div class="mxd-promo__bg"></div>
+                <div class="mxd-promo__content">
+                  <p class="mxd-promo__title anim-uni-in-up">
+                    <span class="mxd-promo__caption reveal-type">¿Tienes una idea en mente?</span>
+                  </p>
+                  <div class="mxd-promo__controls anim-uni-in-up">
+                    <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="contact.html">
+                      <span class="btn-caption">Contáctame</span>
+                      <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Page Content End -->
+
+    <!-- Footer Start -->
+    <div id="site-footer"></div>
+    <!-- Footer End -->
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="js/components.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      (function () {
+        var wrap = document.querySelector('.mxd-ba');
+        if (!wrap) return;
+        var clip    = wrap.querySelector('.mxd-ba__clip');
+        var before  = wrap.querySelector('.mxd-ba__before');
+        var divider = wrap.querySelector('.mxd-ba__divider');
+
+        function syncWidth() {
+          before.style.width = wrap.offsetWidth + 'px';
+        }
+        syncWidth();
+        window.addEventListener('resize', syncWidth);
+
+        function setPos(clientX) {
+          var rect = wrap.getBoundingClientRect();
+          var pct  = Math.max(2, Math.min(98, (clientX - rect.left) / rect.width * 100));
+          clip.style.width    = pct + '%';
+          divider.style.left  = pct + '%';
+        }
+
+        wrap.addEventListener('mousedown', function (e) {
+          e.preventDefault();
+          setPos(e.clientX);
+          function onMove(e) { setPos(e.clientX); }
+          function onUp()   { document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); }
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onUp);
+        });
+
+        wrap.addEventListener('touchstart', function (e) { setPos(e.touches[0].clientX); }, { passive: true });
+        wrap.addEventListener('touchmove',  function (e) { e.preventDefault(); setPos(e.touches[0].clientX); }, { passive: false });
+      })();
+    </script>
+
+    <!-- WhatsApp Purchase Demo Logic -->
+    <script>
+    (function () {
+      'use strict';
+
+      var WAD_PRODUCTS = {
+        diabetes:     { emoji: '🩸', name: 'Metformina 500mg',   qty: 'Caja × 30 tabletas', price: '$3.20', badge: '✅ En stock · Todas las sucursales' },
+        hipertension: { emoji: '🫀', name: 'Losartán 50mg',       qty: 'Caja × 30 tabletas', price: '$4.80', badge: '✅ En stock · Todas las sucursales' },
+        alergias:     { emoji: '🤧', name: 'Loratadina 10mg',     qty: 'Caja × 30 tabletas', price: '$2.50', badge: '✅ En stock · Disponible ahora'      },
+        dolor:        { emoji: '🤒', name: 'Paracetamol 500mg',   qty: 'Caja × 20 tabletas', price: '$1.80', badge: '✅ En stock · Todas las sucursales' }
+      };
+
+      var WAD_FLOW = {
+        start: {
+          msgs: ['¡Hola! 👋 Bienvenido al asistente de *Farmacias Económicas*.\n\n¿En qué puedo ayudarte hoy?'],
+          opts: [
+            { t: '💊 Buscar un medicamento', n: 'buscar'    },
+            { t: '🎁 Promociones del mes',   n: 'promos'    },
+            { t: '💎 Consultar mis puntos',  n: 'puntos'    },
+            { t: '🏪 Farmacias cercanas',    n: 'farmacias' }
+          ]
+        },
+        buscar: {
+          msgs: ['¡Con gusto! ¿Para qué condición necesitas el medicamento?'],
+          opts: [
+            { t: '🩸 Diabetes',       n: 'r_diabetes'     },
+            { t: '🫀 Hipertensión',   n: 'r_hipertension' },
+            { t: '🤧 Alergias',       n: 'r_alergias'     },
+            { t: '🤒 Dolor y Fiebre', n: 'r_dolor'        }
+          ]
+        },
+        r_diabetes: {
+          msgs: ['Tenemos medicamentos disponibles para *diabetes*:', 'PRODUCT:diabetes', '¿Deseas hacer tu pedido? 🛒'],
+          opts: [
+            { t: '✅ Pedir por WhatsApp', n: 'WHATSAPP', cta: true },
+            { t: '🔙 Otra condición',     n: 'buscar'             }
+          ]
+        },
+        r_hipertension: {
+          msgs: ['Tenemos medicamentos disponibles para *hipertensión*:', 'PRODUCT:hipertension', '¿Deseas hacer tu pedido? 🛒'],
+          opts: [
+            { t: '✅ Pedir por WhatsApp', n: 'WHATSAPP', cta: true },
+            { t: '🔙 Otra condición',     n: 'buscar'             }
+          ]
+        },
+        r_alergias: {
+          msgs: ['Tenemos medicamentos disponibles para *alergias*:', 'PRODUCT:alergias', '¿Deseas hacer tu pedido? 🛒'],
+          opts: [
+            { t: '✅ Pedir por WhatsApp', n: 'WHATSAPP', cta: true },
+            { t: '🔙 Otra condición',     n: 'buscar'             }
+          ]
+        },
+        r_dolor: {
+          msgs: ['Tenemos medicamentos disponibles para *dolor y fiebre*:', 'PRODUCT:dolor', '¿Deseas hacer tu pedido? 🛒'],
+          opts: [
+            { t: '✅ Pedir por WhatsApp', n: 'WHATSAPP', cta: true },
+            { t: '🔙 Otra condición',     n: 'buscar'             }
+          ]
+        },
+        promos: {
+          msgs: ['¡Estas son las *promociones activas* esta semana! 🎉', 'PROMO', '¿Te interesa alguna de estas ofertas?'],
+          opts: [
+            { t: '✅ Aprovechar ahora',   n: 'WHATSAPP', cta: true },
+            { t: '💊 Buscar medicamento', n: 'buscar'             }
+          ]
+        },
+        puntos: {
+          msgs: [
+            'Para consultar tus puntos solo necesito tu número de cédula o tu tarjeta cliente. 🔒',
+            '💎 *Saldo consultado:*\n350 puntos acumulados\n= $1.75 de descuento en tu próxima compra.\n\n🎯 ¡Estás a 150 puntos de tu próximo canje!'
+          ],
+          opts: [
+            { t: '✅ Usar mis puntos ahora', n: 'WHATSAPP', cta: true },
+            { t: '💊 Buscar medicamento',    n: 'buscar'             }
+          ]
+        },
+        farmacias: {
+          msgs: ['📍 Encontré 3 farmacias cerca de ti:', 'FARMACIAS'],
+          opts: [
+            { t: '✅ Ver horarios completos', n: 'WHATSAPP', cta: true },
+            { t: '💊 Buscar medicamento',     n: 'buscar'             }
+          ]
+        }
+      };
+
+      var msgsEl = document.getElementById('fe-wad-messages');
+      var optsEl = document.getElementById('fe-wad-opts');
+      if (!msgsEl || !optsEl) return;
+
+      var queue = [];
+      var busy  = false;
+
+      function ts() {
+        return new Date().toLocaleTimeString('es-EC', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function parse(t) {
+        return t.replace(/\*([^*]+)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+      }
+
+      function scroll() { msgsEl.scrollTop = msgsEl.scrollHeight; }
+
+      function addBubble(text, cls) {
+        var el = document.createElement('div');
+        el.className = 'fe-wad-msg ' + cls;
+        el.innerHTML = parse(text) + '<span class="fe-wad-msg-time">' + ts() + '</span>';
+        msgsEl.appendChild(el);
+        scroll();
+      }
+
+      function addTyping() {
+        var el = document.createElement('div');
+        el.className = 'fe-wad-typing';
+        el.innerHTML = '<span></span><span></span><span></span>';
+        msgsEl.appendChild(el);
+        scroll();
+        return el;
+      }
+
+      function addProduct(key) {
+        var p = WAD_PRODUCTS[key];
+        if (!p) return;
+        var el = document.createElement('div');
+        el.className = 'fe-wad-product';
+        el.innerHTML =
+          '<div class="fe-wad-product-top">' +
+            '<span class="fe-wad-product-emoji">' + p.emoji + '</span>' +
+            '<div><p class="fe-wad-product-name">' + p.name + '</p><p class="fe-wad-product-qty">' + p.qty + '</p></div>' +
+          '</div>' +
+          '<div class="fe-wad-product-bottom">' +
+            '<p class="fe-wad-product-price">' + p.price + '</p>' +
+            '<p class="fe-wad-product-badge">' + p.badge + '</p>' +
+          '</div>';
+        msgsEl.appendChild(el);
+        scroll();
+      }
+
+      function addPromo() {
+        var el = document.createElement('div');
+        el.className = 'fe-wad-promo';
+        el.innerHTML =
+          '<div class="fe-wad-promo-top">🎁 OFERTAS ESPECIALES · ESTA SEMANA</div>' +
+          '<div class="fe-wad-promo-body">2×1 en vitaminas y suplementos 💊<br>30% dto. en medicamentos genéricos 💰<br>Envío gratis en pedidos +$15 🚚<br><span style="font-size:11px;color:#999;">📅 Válido hasta el 31 de mayo 2025</span></div>';
+        msgsEl.appendChild(el);
+        scroll();
+      }
+
+      function addFarmacias() {
+        var el = document.createElement('div');
+        el.className = 'fe-wad-farmacias';
+        el.innerHTML =
+          '<div class="fe-wad-farmacia"><strong>Quito Norte — Av. Naciones Unidas</strong>⏰ 08:00–22:00 · 📍 1.2 km · ⚡ Abierta ahora</div>' +
+          '<div class="fe-wad-farmacia"><strong>Quito Centro — Av. 10 de Agosto</strong>⏰ 07:00–22:00 · 📍 2.4 km · ⚡ Abierta ahora</div>' +
+          '<div class="fe-wad-farmacia"><strong>Quito Sur — Av. Maldonado</strong>⏰ 08:00–21:00 · 📍 3.1 km · ⚡ Abierta ahora</div>';
+        msgsEl.appendChild(el);
+        scroll();
+      }
+
+      function next() {
+        if (!queue.length) { busy = false; return; }
+        busy = true;
+        var item = queue.shift();
+        if (item.type === 'user') {
+          optsEl.innerHTML = '';
+          addBubble(item.text, 'user');
+          setTimeout(next, 350);
+        } else if (item.type === 'typing') {
+          var t = addTyping();
+          setTimeout(function () { if (t.parentNode) msgsEl.removeChild(t); next(); }, item.delay || 750);
+        } else if (item.type === 'bot') {
+          addBubble(item.text, 'bot');
+          setTimeout(next, 200);
+        } else if (item.type === 'card') {
+          var k = item.key;
+          if (k.indexOf('PRODUCT:') === 0)  addProduct(k.split(':')[1]);
+          else if (k === 'PROMO')            addPromo();
+          else if (k === 'FARMACIAS')        addFarmacias();
+          setTimeout(next, 250);
+        } else if (item.type === 'opts') {
+          renderOpts(item.opts);
+          busy = false;
+        }
+      }
+
+      function enqueue(items) {
+        items.forEach(function (i) { queue.push(i); });
+        if (!busy) next();
+      }
+
+      function renderOpts(opts) {
+        optsEl.innerHTML = '';
+        opts.forEach(function (opt) {
+          var btn = document.createElement('button');
+          btn.className = 'fe-wad-opt' + (opt.cta ? ' fe-wad-opt-cta' : '');
+          btn.textContent = opt.t;
+          btn.addEventListener('click', function () {
+            if (opt.n === 'WHATSAPP') {
+              var msg = encodeURIComponent('Hola, quiero realizar un pedido en Farmacias Económicas 💊');
+              window.open('https://wa.me/593XXXXXXXXX?text=' + msg, '_blank');
+              return;
+            }
+            var flow = WAD_FLOW[opt.n];
+            if (!flow) return;
+            var items = [{ type: 'user', text: opt.t }];
+            flow.msgs.forEach(function (m) {
+              items.push({ type: 'typing', delay: 700 });
+              if (m.indexOf('PRODUCT:') === 0 || m === 'PROMO' || m === 'FARMACIAS') {
+                items.push({ type: 'card', key: m });
+              } else {
+                items.push({ type: 'bot', text: m });
+              }
+            });
+            items.push({ type: 'opts', opts: flow.opts });
+            enqueue(items);
+          });
+          optsEl.appendChild(btn);
+        });
+        var rst = document.createElement('button');
+        rst.className = 'fe-wad-restart';
+        rst.textContent = '↺ Volver al inicio';
+        rst.addEventListener('click', startDemo);
+        optsEl.appendChild(rst);
+      }
+
+      function startDemo() {
+        msgsEl.innerHTML = '';
+        optsEl.innerHTML = '';
+        queue = [];
+        busy  = false;
+        var flow = WAD_FLOW.start;
+        enqueue([
+          { type: 'typing', delay: 900 },
+          { type: 'bot',    text: flow.msgs[0] },
+          { type: 'opts',   opts: flow.opts }
+        ]);
+      }
+
+      startDemo();
+    }());
+    </script>
+
+  </body>
+
+</html>
