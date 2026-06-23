@@ -1,4 +1,4 @@
-/*! ------------------------------------------------
+﻿/*! ------------------------------------------------
  * Project Name: Rayo - Digital Agency & Personal Portfolio HTML Template
  * Project Description: Elevate your digital presence with Rayo - dynamic and stylish HTML template designed for creative agencies and personal brands. With modern layouts, smooth interactions and a polished aesthetic, Rayo template helps showcase projects, services and expertise with clarity and impact.
  * Tags: mix_design, resume, portfolio, personal page, cv, template, one page, responsive, html5, css3, creative, clean, agency, studio 
@@ -116,8 +116,8 @@
   --base-shade--light: #e0dddb;
   --base-opp--light: #161616;
   --base-opp-tint--light: #1C1C1C;
-  --accent--light: #9F8BE7;
-  --accent-rgb--light: 159, 139, 231;
+  --accent--light: #DE7356;
+  --accent-rgb--light: 222, 115, 86;
   --additional--light: #DDF160;
   --additional-rgb--light: 221, 241, 96;
   --neutral-transparent--light: rgba(255, 255, 255, 0.3);
@@ -156,8 +156,8 @@
   --base-opp-tint--dark: #ffffff;
   --accent--dark: #DDF160;
   --accent-rgb--dark: 221, 241, 96;
-  --additional--dark: #9F8BE7;
-  --additional-rgb--dark: 159, 139, 231;
+  --additional--dark: #DE7356;
+  --additional-rgb--dark: 222, 115, 86;
   --neutral-transparent--dark: rgba(0, 0, 0, 0.3);
   --st-bright--dark: #FFFFFF;
   --st-medium--dark: #646464;
@@ -192,8 +192,8 @@
   --pt-t-dark-bright: #161616;
   --pt-st-light-bright: #FFFFFF;
   --pt-st-dark-bright: #161616;
-  --pt-purple-rgb: 159, 139, 231;
-  --pt-purple-dark-rgb: 33, 10, 113;
+  --pt-purple-rgb: 222, 115, 86;
+  --pt-purple-dark-rgb: 111, 36, 27;
   /* neutral colors */
   --nl-white: #ffffff;
   --nl-black: #000000;

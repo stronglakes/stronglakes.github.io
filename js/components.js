@@ -100,6 +100,34 @@
       </div>
     </footer>`;
 
+  var CTA = `
+    <div class="mxd-section overflow-hidden">
+      <div class="mxd-container">
+        <div class="mxd-block">
+          <div class="mxd-promo">
+            <div class="mxd-promo__inner anim-zoom-out-container">
+              <div class="mxd-promo__bg"></div>
+              <div class="mxd-promo__content">
+                <p class="mxd-promo__title anim-uni-in-up">
+                  <span class="mxd-promo__caption reveal-type">&#191;Tienes un proyecto en mente?</span>
+                </p>
+                <div class="mxd-promo__controls anim-uni-in-up">
+                  <a class="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="mailto:fuerteslagos@gmail.com?subject=Hablemos%20de%20tu%20proyecto">
+                    <span class="btn-caption">Hablemos</span>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="mxd-promo__images">
+                <img class="promo-image promo-image-1" src="https://dummyimage.com/600x600/5d5d5d/838383" alt="Image">
+                <img class="promo-image promo-image-2" src="https://dummyimage.com/300x300/5d5d5d/838383" alt="Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
   var navEl = document.getElementById('site-nav');
   if (navEl) {
     var navTemp = document.createElement('div');
@@ -109,6 +137,12 @@
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
+    var isProjectPage = /project-details/.test(window.location.pathname);
+    if (!isProjectPage) {
+      var ctaTemp = document.createElement('div');
+      ctaTemp.innerHTML = CTA;
+      footerEl.parentNode.insertBefore(ctaTemp.firstElementChild, footerEl);
+    }
     var footerTemp = document.createElement('div');
     footerTemp.innerHTML = FOOTER;
     footerEl.parentNode.replaceChild(footerTemp.firstElementChild, footerEl);
