@@ -118,10 +118,6 @@
                   </a>
                 </div>
               </div>
-              <div class="mxd-promo__images">
-                <img class="promo-image promo-image-1" src="https://dummyimage.com/600x600/5d5d5d/838383" alt="Image">
-                <img class="promo-image promo-image-2" src="https://dummyimage.com/300x300/5d5d5d/838383" alt="Image">
-              </div>
             </div>
           </div>
         </div>

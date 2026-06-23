@@ -118,8 +118,8 @@
   --base-opp-tint--light: #1C1C1C;
   --accent--light: #F25C05;
   --accent-rgb--light: 242, 92, 5;
-  --additional--light: #FEE2A0;
-  --additional-rgb--light: 254, 226, 160;
+  --additional--light: #F2F2F0;
+  --additional-rgb--light: 242, 242, 240;
   --neutral-transparent--light: rgba(255, 255, 255, 0.3);
   --st-bright--light: #161616;
   --st-medium--light: #7C7C7C;
@@ -154,8 +154,8 @@
   --base-shade--dark: #0a0a0a;
   --base-opp--dark: #FAF7F6;
   --base-opp-tint--dark: #ffffff;
-  --accent--dark: #FEE2A0;
-  --accent-rgb--dark: 254, 226, 160;
+  --accent--dark: #F2F2F0;
+  --accent-rgb--dark: 242, 242, 240;
   --additional--dark: #F25C05;
   --additional-rgb--dark: 242, 92, 5;
   --neutral-transparent--dark: rgba(0, 0, 0, 0.3);
@@ -425,7 +425,7 @@
 }
 
 .mxd-promo__bg {
-  background-image: url(https://dummyimage.com/1400x900/838383/5d5d5d);
+  background-image: url(../img/services/800x800_card-image-01.webp);
 }
 
 .preview-image-1 {
