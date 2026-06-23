@@ -116,10 +116,10 @@
   --base-shade--light: #e0dddb;
   --base-opp--light: #161616;
   --base-opp-tint--light: #1C1C1C;
-  --accent--light: #DE7356;
-  --accent-rgb--light: 222, 115, 86;
-  --additional--light: #DDF160;
-  --additional-rgb--light: 221, 241, 96;
+  --accent--light: #F25C05;
+  --accent-rgb--light: 242, 92, 5;
+  --additional--light: #FEE2A0;
+  --additional-rgb--light: 254, 226, 160;
   --neutral-transparent--light: rgba(255, 255, 255, 0.3);
   --st-bright--light: #161616;
   --st-medium--light: #7C7C7C;
@@ -154,10 +154,10 @@
   --base-shade--dark: #0a0a0a;
   --base-opp--dark: #FAF7F6;
   --base-opp-tint--dark: #ffffff;
-  --accent--dark: #DDF160;
-  --accent-rgb--dark: 221, 241, 96;
-  --additional--dark: #DE7356;
-  --additional-rgb--dark: 222, 115, 86;
+  --accent--dark: #FEE2A0;
+  --accent-rgb--dark: 254, 226, 160;
+  --additional--dark: #F25C05;
+  --additional-rgb--dark: 242, 92, 5;
   --neutral-transparent--dark: rgba(0, 0, 0, 0.3);
   --st-bright--dark: #FFFFFF;
   --st-medium--dark: #646464;
@@ -2539,6 +2539,18 @@ p.t-semibold {
   }
   .btn-rotating-blur-outline.permanent-desktop .btn-rotating__text text {
     fill: var(--nl-white);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .mxd-block__image .btn-rotating-blur-outline {
+    -webkit-transform: scale(0.6);
+       -moz-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+            transform: scale(0.6);
+    -webkit-transform-origin: top right;
+       -moz-transform-origin: top right;
+        -ms-transform-origin: top right;
+            transform-origin: top right;
   }
 }
 
