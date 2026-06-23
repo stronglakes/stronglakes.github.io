@@ -425,7 +425,7 @@
 }
 
 .mxd-promo__bg {
-  background-image: url(https://dummyimage.com/1400x900/838383/5d5d5d);
+  background-image: url(../img/services/800x800_card-image-01.webp);
 }
 
 .preview-image-1 {
@@ -6452,29 +6452,6 @@ form textarea:required:valid {
     left: 6rem;
     bottom: 18rem;
   }
-}
-@media only screen and (min-width: 1200px) {
-  .mxd-promo__images .promo-image-3 {
-    width: 180px;
-    height: auto;
-    top: 3rem;
-    left: 0;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  .mxd-promo__images .promo-image-3 {
-    left: 6rem;
-  }
-}
-@media only screen and (min-width: 1600px) {
-  .mxd-promo__images .promo-image-3 {
-    width: 210px;
-    top: 4rem;
-  }
-}
-.mxd-promo__images video.promo-image {
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 /* ------------------------------------------------*/

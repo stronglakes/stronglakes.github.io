@@ -100,42 +100,6 @@
       </div>
     </footer>`;
 
-  var PROMO_MEDIA = [
-    { type: 'img', src: 'img/works/LOPDP/800x800_card-image-01.webp', alt: 'LOPDP' },
-    { type: 'img', src: 'img/works/LOPDP/800x800_card-image-02.webp', alt: 'LOPDP' },
-    { type: 'img', src: 'img/works/LOPDP/1200x1200_service-image-04.webp', alt: 'LOPDP' },
-    { type: 'img', src: 'img/works/ituran/800x800_card-image-01.webp', alt: 'Ituran' },
-    { type: 'img', src: 'img/works/subin-migracion/subin-migracion.webp', alt: 'Subin' },
-    { type: 'img', src: 'img/works/holiday/subin-holiday-party.webp', alt: 'Holiday Party' },
-    { type: 'img', src: 'img/works/farmacias-economicas/proyecto-farmacias-economicas.png', alt: 'Farmacias Económicas' },
-    { type: 'img', src: 'img/works/adopta-club/tarjeta-club-3.png', alt: 'Adopta Club' },
-    { type: 'img', src: 'img/works/visit-quito/visit-quito-mobile.png', alt: 'Visit Quito' },
-    { type: 'img', src: 'img/hero/Luis-Fernando-Fuertes-cuadrada.png', alt: 'Luis Fernando Fuertes' },
-    { type: 'video', src: 'video/ituran/rastreo.mp4', alt: 'Ituran' },
-    { type: 'video', src: 'video/adopta-club/adopta-club.mp4', alt: 'Adopta Club' },
-    { type: 'video', src: 'video/visit-quito.mp4', alt: 'Visit Quito' },
-    { type: 'video', src: 'video/codigo.mp4', alt: 'Código' },
-    { type: 'video', src: 'video/Holiday/INVITE.mp4', alt: 'Holiday Party' },
-  ];
-
-  function promoMediaHTML(item, cls) {
-    if (item.type === 'video') {
-      return '<video class="promo-image ' + cls + '" autoplay muted loop playsinline><source src="' + item.src + '" type="video/mp4"></video>';
-    }
-    return '<img class="promo-image ' + cls + '" src="' + item.src + '" alt="' + item.alt + '">';
-  }
-
-  function buildPromoImages() {
-    var pool = PROMO_MEDIA.slice();
-    for (var i = pool.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = pool[i]; pool[i] = pool[j]; pool[j] = t;
-    }
-    return promoMediaHTML(pool[0], 'promo-image-1') +
-           '\n                ' + promoMediaHTML(pool[1], 'promo-image-2') +
-           '\n                ' + promoMediaHTML(pool[2], 'promo-image-3');
-  }
-
   var CTA = `
     <div class="mxd-section overflow-hidden">
       <div class="mxd-container">
@@ -153,9 +117,6 @@
                     <i class="ph-bold ph-arrow-up-right"></i>
                   </a>
                 </div>
-              </div>
-              <div class="mxd-promo__images">
-                ` + buildPromoImages() + `
               </div>
             </div>
           </div>
